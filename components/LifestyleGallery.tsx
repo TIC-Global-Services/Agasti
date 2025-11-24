@@ -38,7 +38,7 @@ export default function LifestyleGallery() {
       <ContainerLayout>
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="font-gc-palioka text-2xl sm:text-3xl md:text-4xl lg:text-[44px] text-black leading-tight">
+          <h2 className="font-gc-palioka text-[20px] sm:text-2xl md:text-3xl lg:text-4xl text-black leading-tight">
             Experience a Life of Convenience
             <br />
             and Indulgence
