@@ -8,13 +8,14 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative h-screen w-full">
+      <section className="relative h-screen w-full min-h-[600px]">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/herosection.jpg"
+            src="/mainvilla.jpg"
             alt="Agasti Villa"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -26,28 +27,29 @@ export default function HeroSection() {
         {/* Content */}
         <div className="relative z-10 flex h-full flex-col">
           {/* Header with Text and Menu */}
-          <div className="relative px-6 py-8 xl:px-[145px] lg:px-[50px]">
+          <div className="relative px-4 py-6 sm:px-6 sm:py-8 xl:px-[145px] lg:px-[50px]">
             {/* Centered AGASTI Logo */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-8">
-              <div className="relative h-[44px] w-auto aspect-[4/1]">
+            <div className="absolute left-1/2 -translate-x-1/2 top-6 sm:top-8">
+              <div className="relative h-[36px] sm:h-[44px] w-auto aspect-[4/1]">
                 <Image
                   src="/Agasti_Logo.png"
                   alt="Agasti Logo"
                   fill
+                  sizes="(max-width: 640px) 144px, 176px"
                   className="object-contain"
                 />
               </div>
             </div>
             
             {/* Hamburger Menu - Top Right */}
-            <div className="absolute right-6 top-8 xl:right-[145px] lg:right-[50px]">
+            <div className="absolute right-4 top-6 sm:right-6 sm:top-8 xl:right-[145px] lg:right-[50px]">
               <button 
                 onClick={() => setIsMenuOpen(true)}
                 className="hover:opacity-80 transition-opacity flex flex-col gap-2"
                 aria-label="Open menu"
               >
-                <span className="w-8 h-[2px] bg-black rounded-full" />
-                <span className="w-8 h-[2px] bg-black rounded-full" />
+                <span className="w-6 sm:w-8 h-[2px] bg-black rounded-full" />
+                <span className="w-6 sm:w-8 h-[2px] bg-black rounded-full" />
               </button>
             </div>
           </div>

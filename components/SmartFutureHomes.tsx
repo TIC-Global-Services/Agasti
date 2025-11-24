@@ -21,18 +21,18 @@ export default function SmartFutureHomes() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-20">
+    <section ref={sectionRef} className="bg-white py-12 sm:py-16 md:py-20">
       <ContainerLayout>
         {/* Header */}
-        <div className="mb-12">
-          <p className="text-[#8D957E] text-[24px] mb-6 font-bold">Smart, Future-Ready Engineering</p>
+        <div className="mb-8 sm:mb-12">
+          <p className="text-[#8D957E] text-base sm:text-lg md:text-xl lg:text-[24px] mb-4 sm:mb-6 font-bold">Smart, Future-Ready Engineering</p>
           
-          <div className="flex flex-col lg:flex-row justify-between gap-8 mb-8 lg:items-end">
-            <h2 className="font-gc-palioka md:text-[32px] text-black leading-tight max-w-2xl">
+          <div className="flex flex-col lg:flex-row justify-between gap-6 sm:gap-8 mb-6 sm:mb-8 lg:items-end">
+            <h2 className="font-gc-palioka text-xl sm:text-2xl md:text-[28px] lg:text-[32px] text-black leading-tight max-w-2xl">
               Crafting Homes Designed for Intelligent Living, <br></br>Lasting Strength, and a Future-Ready Lifestyle
             </h2>
             
-            <p className="text-gray-500 text-[16px] leading-relaxed max-w-md">
+            <p className="text-gray-500 text-xs sm:text-sm md:text-[16px] leading-relaxed max-w-md">
               Agasti homes use advanced structures, planned MEP systems, quality 
               waterproofing, and solar integration to ensure long-term durability, easy 
               upkeep, and a modern living experience built for the future.
@@ -43,7 +43,7 @@ export default function SmartFutureHomes() {
         <hr className="border-gray-400 mb-12" />
 
         {/* Parallax Image */}
-        <div className="relative h-[500px] md:h-[600px] overflow-hidden">
+        <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg">
           <div
             style={{
               transform: `translateY(${offsetY * 0.5}px)`,
@@ -52,9 +52,10 @@ export default function SmartFutureHomes() {
             className="relative w-full h-[120%]"
           >
             <Image
-              src="/1da7549ce5dc473d705a387be5e5ddff0675605a (1).jpg"
+              src="mainvilla.jpg"
               alt="Smart Future Home"
               fill
+              sizes="100vw"
               className="object-cover"
             />
           </div>

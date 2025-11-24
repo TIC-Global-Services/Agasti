@@ -10,21 +10,23 @@ export default function AboutAgasti() {
             src="/aboutus.png"
             alt="Agasti Interior"
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
+            priority
           />
         </div>
 
         {/* Right Side - Content */}
-        <div className="bg-[#F5F3EE] flex items-center justify-center px-8 py-16 md:px-16 lg:px-24">
+        <div className="bg-[#F5F3EE] flex items-center justify-center px-6 py-12 sm:px-8 sm:py-16 md:px-16 lg:px-24">
           <div className="max-w-xl">
-            <p className="font-gc-palioka text-[#8D957E] text-[25px] mb-4 tracking-wider font-bold">About AGASTI</p>
+            <p className="font-gc-palioka text-[#8D957E] text-lg sm:text-xl md:text-[25px] mb-4 tracking-wider font-bold">About AGASTI</p>
             
-            <h2 className="font-gc-palioka text-4xl md:text-5xl lg:text-6xl text-black mb-6 leading-tight whitespace-nowrap">
+            <h2 className="font-gc-palioka text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black mb-6 leading-tight">
               An Urban Sanctuary <br></br>for the Elite
             </h2>
             
-            <div className="space-y-4 text-gray-600 mb-8">
-              <p>
+            <div className="space-y-3 sm:space-y-4 text-gray-600 mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base">
                 Atara is more than a home — it's a living experience that celebrates 
                 tranquility, space, and sophistication.
               <br></br>
@@ -33,7 +35,7 @@ export default function AboutAgasti() {
               </p>
             </div>
 
-            <button className="text-black font-medium hover:opacity-70 transition-opacity group">
+            <button className="text-black text-sm sm:text-base font-medium hover:opacity-70 transition-opacity group">
               <span className="relative inline-block">
                 Know More
                 <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full"></span>

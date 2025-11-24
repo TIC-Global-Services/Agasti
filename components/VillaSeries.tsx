@@ -39,49 +39,50 @@ export default function VillaSeries() {
   };
 
   return (
-    <section className="bg-[#F5F3EE] py-20">
+    <section className="bg-[#F5F3EE] py-12 sm:py-16 md:py-20">
       <ContainerLayout>
         {/* Header */}
-        <div className="mb-12 pb-8 border-b border-gray-300">
-          <p className="text-[#8D957E] text-[24px] mb-4 font-bold">The Agasti Villa Series</p>
-          <h2 className="font-gc-palioka text-4xl md:text-5xl text-black leading-tight">
+        <div className="mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-gray-300">
+          <p className="text-[#8D957E] text-base sm:text-lg md:text-xl lg:text-[24px] mb-3 sm:mb-4 font-bold">The Agasti Villa Series</p>
+          <h2 className="font-gc-palioka text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-black leading-tight">
             Villas Crafted for Every Lifestyle and Every Direction
           </h2>
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12 relative">
           {/* Left Side - Image */}
-          <div className="relative h-[400px] lg:h-[600px] overflow-hidden">
+          <div className="relative h-[300px] sm:h-[400px] lg:h-[600px] overflow-hidden">
             <Image
               src={villas[activeIndex].image}
               alt={villas[activeIndex].title}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className={`object-cover transition-opacity duration-500 ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
               key={activeIndex}
+              priority
             />
           </div>
 
           {/* Vertical Line */}
-          {/* <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px h[-600px] bg-gray-400 -translate-x-1/2" /> */}
-          <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-y-1/2 w-px bg-gray-400 h-[670px] -translate-x-1/2" />
+          {/* <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-y-1/2 w-px bg-gray-400 h-[90%] -translate-x-1/2" /> */}
 
           {/* Right Side - Accordion */}
-          <div className="flex flex-col h-[400px] lg:h-[600px]">
+          <div className="flex flex-col h-auto lg:h-[600px]">
             {villas.map((villa, index) => (
               <div key={index} className="border-b border-gray-300 flex-1 flex flex-col">
                 {/* Accordion Header */}
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between py-8 text-left hover:opacity-70 transition-opacity"
+                  className="w-full flex items-center justify-between py-4 sm:py-6 lg:py-8 text-left hover:opacity-70 transition-opacity"
                 >
-                  <h3 className="font-gc-palioka text-3xl md:text-4xl text-black">
+                  <h3 className="font-gc-palioka text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black">
                     {villa.title}
                   </h3>
                   {activeIndex !== index && (
-                    <span className="text-4xl text-gray-400 font-light">
+                    <span className="text-2xl sm:text-3xl md:text-4xl text-gray-400 font-light">
                       +
                     </span>
                   )}
@@ -93,7 +94,7 @@ export default function VillaSeries() {
                     activeIndex === index ? "max-h-96 pb-8" : "max-h-0"
                   }`}
                 >
-                  <p className="text-gray-500 text-base leading-relaxed mt-52">
+                  <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-6 sm:mt-8 md:mt-12">
                     <span className="font-semibold text-gray-600">{villa.title}</span> {villa.description.replace(villa.title, '')}
                   </p>
                 </div>

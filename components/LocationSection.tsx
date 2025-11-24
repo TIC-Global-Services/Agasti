@@ -1,16 +1,16 @@
-import Image from "next/image";
+"use client";
 import ContainerLayout from "@/layout/ContainerLayout";
 
 export default function LocationSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-8 sm:py-12 md:py-16">
       <ContainerLayout>
         <div className="bg-[#E8E6E1] rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Side - Content */}
-            <div className="flex items-center px-8 py-16 md:px-16 lg:px-20">
+            <div className="flex items-center px-6 py-12 sm:px-8 sm:py-16 md:px-16 lg:px-20">
               <div className="max-w-lg">
-                <h2 className="font-gc-palioka text-4xl md:text-5xl text-black mb-6 leading-tight">
+                <h2 className="font-gc-palioka text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-black mb-4 sm:mb-6 leading-tight">
                   Your Gateway
                   <br />
                   to Comfort, Connection,
@@ -18,7 +18,7 @@ export default function LocationSection() {
                   and Ease
                 </h2>
                 
-                <p className="text-gray-600 text-base leading-relaxed">
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                   Atara by Agasti is strategically placed to offer peaceful living without 
                   compromising accessibility. From top schools and hospitals to 
                   business hubs, entertainment, and the airport—everything you need is 
@@ -28,32 +28,43 @@ export default function LocationSection() {
             </div>
 
             {/* Right Side - Map */}
-            <div className="relative h-[400px] lg:h-auto min-h-[400px]">
-              <Image
-                src="/map.png"
-                alt="Location Map"
-                fill
-                className="object-cover"
-              />
-              {/* Expand Icon */}
-              <button className="absolute top-4 right-4 bg-white p-2 rounded-lg shadow-md hover:bg-gray-100 transition-colors">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-black"
+            <div className="relative h-[300px] sm:h-[400px] lg:h-auto lg:min-h-[400px] p-4 sm:p-6 lg:p-8">
+              <div className="relative w-full h-full rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6!2d78.3489!3d17.4435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI2JzM2LjYiTiA3OMKwMjAnNTYuMCJF!5e0!3m2!1sen!2sin!4v1234567890!5m2!1sen!2sin&q=Gachibowli,+Hyderabad"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Agasti Estates Location"
+                  className="absolute inset-0"
+                />
+                
+                {/* Expand Icon */}
+                <button 
+                  onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Agasti+Estates+Gachibowli+Hyderabad', '_blank')}
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white p-1.5 sm:p-2 rounded-lg shadow-md hover:bg-gray-100 transition-colors z-10"
                 >
-                  <path
-                    d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-black"
+                  >
+                    <path
+                      d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>

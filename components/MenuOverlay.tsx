@@ -38,28 +38,45 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
             src="/menu-image.jpg"
             alt="Interior"
             fill
+            sizes="50vw"
             className="object-cover"
           />
         </div>
 
         {/* Right Side - Menu Content */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-8 py-12 md:px-16 lg:px-24 relative">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 py-12 sm:px-8 md:px-16 lg:px-24 relative">
           {/* Close Button */}
           <button
             onClick={handleClose}
             className="absolute top-8 right-8 text-gray-400 hover:text-black transition-colors"
             aria-label="Close menu"
           >
-            <span className="text-sm tracking-wider">CLOSE</span>
+            {/* Cross icon for mobile */}
+            <svg
+              className="w-6 h-6 sm:hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            {/* Text for tablet/desktop */}
+            <span className="hidden sm:inline text-sm tracking-wider">CLOSE</span>
           </button>
 
           {/* Logo */}
-          <div className="mb-16">
-            <div className="relative h-[60px] w-auto aspect-[4/1]">
+          <div className="mb-12 sm:mb-16">
+            <div className="relative h-[50px] sm:h-[60px] w-auto aspect-[4/1]">
               <Image
                 src="/Agasti_Logo.png"
                 alt="Agasti Logo"
                 fill
+                sizes="(max-width: 640px) 200px, 240px"
                 className="object-contain"
               />
             </div>
@@ -67,24 +84,24 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
           {/* Navigation Links - Centered */}
           <nav className="mb-auto">
-            <ul className="space-y-6 text-gray-500 text-center">
+            <ul className="space-y-4 sm:space-y-6 text-gray-500 text-center">
               <li>
-                <a href="#home" className="hover:text-black transition-colors text-lg">
+                <a href="#home" className="hover:text-black transition-colors text-base sm:text-lg">
                   HOME
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-black transition-colors text-lg">
+                <a href="#about" className="hover:text-black transition-colors text-base sm:text-lg">
                   ABOUT
                 </a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-black transition-colors text-lg">
+                <a href="#projects" className="hover:text-black transition-colors text-base sm:text-lg">
                   PROJECTS
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-black transition-colors text-lg">
+                <a href="#contact" className="hover:text-black transition-colors text-base sm:text-lg">
                   CONTACT
                 </a>
               </li>
@@ -92,8 +109,8 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
           </nav>
 
           {/* Footer Content */}
-          <div className="absolute bottom-12 left-8 right-8 md:left-16 md:right-16 lg:left-24 lg:right-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-500 mb-8">
+          <div className="absolute bottom-8 sm:bottom-12 left-6 right-6 sm:left-8 sm:right-8 md:left-16 md:right-16 lg:left-24 lg:right-24 w-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8">
               {/* Need Support */}
               <div>
                 <h3 className="font-semibold mb-2 text-gray-700">NEED SUPPORT?</h3>
@@ -101,7 +118,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               </div>
 
               {/* Address */}
-              <div>
+              <div className="sm:text-right">
                 <h3 className="font-semibold mb-2 text-gray-700">ADDRESS</h3>
                 <p>AGASTIESTATES, GACHIBOWLI,</p>
                 <p>HYDERABAD - 500032</p>
@@ -130,14 +147,14 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               </div>
 
               {/* Customer Care */}
-              <div>
+              <div className="sm:text-right">
                 <h3 className="font-semibold mb-2 text-gray-700">CUSTOMER CARE</h3>
                 <p>+1 234 567 8910</p>
               </div>
             </div>
 
             {/* Bottom Links */}
-            <div className="flex justify-between text-xs text-gray-400">
+            <div className="flex justify-between items-center text-xs text-gray-400">
               <a href="#" className="hover:text-black transition-colors">
                 PRIVACY POLICY
               </a>
