@@ -61,43 +61,43 @@ export default function Services() {
         `
       }} />
       <ContainerLayout>
-        {/* Header */}
-        <div className="mb-12 sm:mb-16">
-          <p className="text-[#8D957E] text-base sm:text-lg md:text-xl lg:text-[24px] mb-4 font-bold">Where Luxury Meets Nature</p>
-          <h2 className="font-gc-palioka text-[20px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-black leading-tight">
-            Elegance curated with care, <br></br>serenity framed in every vista.
+        {/* Header Section */}
+        <div className="mb-8 sm:mb-12">
+          <p className="text-[#8D957E] text-sm sm:text-base md:text-lg mb-3 sm:mb-4">Where Luxury Meets Nature</p>
+          <h2 className="font-gc-palioka text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-black leading-tight">
+            Elegance curated with care,<br />serenity framed in every vista.
           </h2>
         </div>
 
-        <hr className="border-gray-500 mb-12 sm:mb-16" />
+        <hr className="border-gray-300 mb-8 sm:mb-12" />
 
-        {/* Mobile Carousel - Visible only on mobile */}
-        <div className="block sm:hidden -mx-4">
-          <div 
+        {/* Mobile Carousel */}
+        <div className="block sm:hidden -mx-6">
+          <div
             ref={scrollRef}
             onScroll={handleScroll}
             className="overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar"
           >
             <div className="flex">
               {services.map((service, index) => (
-                <div key={index} className="flex flex-col w-screen flex-shrink-0 snap-center px-5">
+                <div key={index} className="flex flex-col w-screen flex-shrink-0 snap-center px-6">
                   {/* Text Content */}
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-black mb-2">
+                  <div className="mb-6">
+                    <h3 className="text-[20px] font-semibold text-black mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
 
                   {/* Image */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <div className="relative aspect-[9/16] w-full overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
-                      sizes="calc(100vw - 40px)"
+                      sizes="100vw"
                       className="object-cover"
                     />
                   </div>
@@ -107,7 +107,7 @@ export default function Services() {
           </div>
           
           {/* Progress Bar */}
-          <div className="flex justify-center gap-2 mt-6 px-5">
+          <div className="flex justify-center gap-2 mt-6">
             {services.map((_, index) => (
               <div 
                 key={index} 
