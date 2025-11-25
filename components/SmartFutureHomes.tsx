@@ -11,12 +11,13 @@ export default function SmartFutureHomes() {
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
-        const scrollProgress = -rect.top / (rect.height + window.innerHeight);
-        setOffsetY(scrollProgress * 100);
+        const scrollProgress = Math.max(0, -rect.top / (rect.height + window.innerHeight));
+        setOffsetY((scrollProgress - 0.3) * 100);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initialize on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,10 +43,10 @@ export default function SmartFutureHomes() {
         <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div
             style={{
-              transform: `translateY(${offsetY * 0.5}px)`,
+              transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
               transition: "transform 0.1s ease-out",
             }}
-            className="relative w-full h-[120%]"
+            className="relative w-full h-[160%] -translate-y-[30%]"
           >
             <Image
               src="mainvilla.jpg"
