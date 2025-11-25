@@ -9,19 +9,19 @@ export default function VillaSeries() {
 
   const villas = [
     {
-      title: "The Agasti Zenith",
+      title: "North Facing Villas",
       description:
         "The Agasti Zenith brings in warm evening light, offering modern layouts and a naturally cozy atmosphere. It's designed for those who enjoy relaxed sunsets, comfortable spaces, and a stylish setting that feels inviting every day.",
       image: "/mainvilla.jpg",
     },
     {
-      title: "The Agasti Crest",
+      title: "East Facing Villas",
       description:
         "The Agasti Crest combines elegance with functionality, featuring spacious interiors and premium finishes. Perfect for families seeking a blend of luxury and comfort in their everyday living.",
       image: "/limitededitionvilla.jpg",
     },
     {
-      title: "The Agasti Horizon",
+      title: "West Facing Villas",
       description:
         "The Agasti Horizon offers panoramic views and open-plan living spaces. Designed for those who appreciate modern architecture and seamless indoor-outdoor connectivity.",
       image: "/resort.jpg",
