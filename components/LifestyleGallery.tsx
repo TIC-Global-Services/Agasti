@@ -52,7 +52,7 @@ export default function LifestyleGallery() {
     {
       title: "Signature Clubhouse",
       description:
-        "A refined retreat with a generous 20,000 sq. ft. built-up area, featuring premium lounges, curated amenities, and serene social spaces for effortless luxury living.",
+        "A refined retreat with more than 20,000 sq. ft. in built-up area, featuring premium lounges, curated amenities, and serene social spaces for effortless luxury living.",
       image: "/clubhouse.png",
       aspectRatio: "aspect-[3/4]",
     },
