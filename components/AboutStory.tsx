@@ -63,27 +63,29 @@ export default function AboutStory() {
         </div>
 
         <ContainerLayout className="pt-20 sm:pt-24 md:pt-28">
-          {/* Parallax Image */}
-          <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden mb-8 sm:mb-12 md:mb-16">
-            <div
-              style={{
-                transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
-                transition: "transform 0.1s ease-out",
-              }}
-              className="relative w-full h-[160%] -translate-y-[30%]"
-            >
-              <Image
-                src="/mainvilla.jpg"
-                alt="Agasti Villa Architecture"
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority
-              />
+          {/* Parallax Image - Centered */}
+          <div className="flex justify-center mb-1 sm:mb-2 md:mb-3">
+            <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+              <div
+                style={{
+                  transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                  transition: "transform 0.1s ease-out",
+                }}
+                className="relative w-full h-[120%] -translate-y-[10%]"
+              >
+                <Image
+                  src="/mainvilla.jpg"
+                  alt="Agasti Villa Architecture"
+                  fill
+                  sizes="1344px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
-          {/* Content Grid */}
+          {/* Content Grid - Properly aligned below image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-20">
             {/* Left Side - Story Header */}
             <div>

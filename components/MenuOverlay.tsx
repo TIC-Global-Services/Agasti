@@ -106,9 +106,9 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
                 </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
+                <Link href="/contact" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
                   CONTACT
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

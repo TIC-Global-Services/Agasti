@@ -114,7 +114,7 @@ export default function AboutExcellence() {
             <div className="lg:col-span-1 flex flex-col gap-[10px]" style={{ width: '435.00439453125px', height: '220px' }}>
               <h2 
                 ref={excellenceRef}
-                className={`text-white text-[24px] font-bold transition-all duration-700 ease-out ${excellenceBlur}`}
+                className={`text-white font-gc-palioka-demo text-[24px] font-bold transition-all duration-700 ease-out ${excellenceBlur}`}
               >
                 Built on Excellence
               </h2>
@@ -124,7 +124,7 @@ export default function AboutExcellence() {
               >
                 Where every property reflects uncompromised quality
               </h3>
-              <p className="text-[#3C3C3C]/80 text-sm leading-relaxed">
+              <p className="text-[#3C3C3C]/80 text-sm leading-relaxed font-plus-jakarta-sans">
                 Building exclusive communities for individuals who seek refined elegance, elevated comfort, and a truly distinguished way of living.
               </p>
             </div>
@@ -204,13 +204,13 @@ export default function AboutExcellence() {
             >
               <h3 
                 ref={visionTitleRef}
-                className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-tight mb-6 transition-all duration-700 ease-out ${visionTitleBlur}`}
+                className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none tracking-[-0.02] mb-6 transition-all duration-700 ease-out ${visionTitleBlur}`}
               >
                 Our Vision
                 <br />
                 for Elevated Living
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-black-600 text-sm leading-tight tracking-[-0.02em]">
                 At Agasti, our vision is to redefine luxury living by creating communities that harmonize architecture, nature, and human experience. We aim to build spaces that feel timeless—crafted with enduring quality, thoughtful engineering, and an unwavering attention to detail.
               </p>
             </div>
@@ -237,13 +237,13 @@ export default function AboutExcellence() {
             <div className="bg-white/40 p-6 rounded-lg max-w-sm border-2 border-white">
               <h3 
                 ref={craftsmanshipRef}
-                className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${craftsmanshipBlur}`}
+                className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-4 transition-all duration-700 ease-out ${craftsmanshipBlur}`}
               >
                 Craftsmanship
                 <br />
                 & Quality
               </h3>
-              <p className="text-gray-600 text-[14px] leading-relaxed">
+              <p className="text-black-600 text-sm leading-tight tracking-[-0.02em]">
                 A section that highlights the details, premium materials, and artisanal finishes that beautifully define every Agasti villa.
               </p>
             </div>
@@ -268,13 +268,13 @@ export default function AboutExcellence() {
               <div className="bg-white/80 p-8 rounded-lg max-w-[435px] border-2 border-white">
                 <h3 
                   ref={sustainabilityRef}
-                  className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-tight mb-6 transition-all duration-700 ease-out ${sustainabilityBlur}`}
+                  className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-6 transition-all duration-700 ease-out ${sustainabilityBlur}`}
                 >
                   Sustainability
                   <br />
                   & Integrity
                 </h3>
-                <p className="text-black text-[14px] leading-relaxed">
+                <p className="text-black-600 text-sm leading-tight tracking-[-0.02em]">
                   We build with honesty and responsibility, creating homes that uphold trust while preserving the environment for generations.
                 </p>
               </div>

@@ -1,0 +1,170 @@
+"use client";
+import Image from "next/image";
+
+export default function ContactForm() {
+  return (
+    <section className="relative bg-white">
+      <div className="flex justify-center">
+        {/* Background Image Container */}
+        <div className="relative" style={{ width: '1440px', height: '500px', maxWidth: '100%' }}>
+          <Image
+            src="/contact-us/contactformbg.png"
+            alt="Contact Form Background"
+            fill
+            sizes="1440px"
+            className="object-cover"
+            priority
+          />
+          
+          {/* Form Overlay - positioned with specific dimensions */}
+          <div className="absolute top-full right-40 transform -translate-y-1/6" style={{ width: '580px', height: '660px' }}>
+            <div className="bg-white shadow-lg p-8 pr-12">
+              <div className="text-center mb-8">
+                <h2 className="font-gc-palioka text-2xl sm:text-3xl text-black mb-2 leading-tight">
+                  We&apos;ll get in touch with
+                  <br />
+                  you soon
+                </h2>
+              </div>
+
+              <form className="space-y-6">
+                {/* Your name field */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name *"
+                    className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-gray-500"
+                  />
+                  <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Email field */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your email address *"
+                    className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-gray-500"
+                  />
+                  <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Phone field */}
+                <div className="relative">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Your phone"
+                    className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-gray-500"
+                  />
+                  <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Message field */}
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Your message"
+                    className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-gray-500 resize-none"
+                  ></textarea>
+                  <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-3">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Submit button */}
+                <div className="pt-4 flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-[#8D957E] text-white text-sm font-medium tracking-wider hover:bg-[#7A8470] transition-colors duration-300 flex items-center justify-center"
+                    style={{ width: '197px', height: '50px', borderRadius: '4px' }}
+                  >
+                    SEND INQUIRY
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Contact Information in white space below image */}
+      <div className="bg-white py-12">
+        <div className="max-w-6xl mx-auto px-6 xl:px-[48px] lg:px-[48px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Side Contact Information */}
+            <div className="space-y-6">
+              {/* Location Header */}
+              <div>
+                <h3 className="font-gc-palioka text-[28px] text-black mb-4 leading-tight">
+                  Hyderabad
+                </h3>
+                
+                {/* Agasti-INDIA and Get in touch aligned */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-baseline mb-6">
+                  <p className="text-black text-lg font-bold">
+                    Agasti - INDIA
+                  </p>
+                  <h4 className="text-black text-lg font-bold">
+                    Get in touch
+                  </h4>
+                </div>
+              </div>
+
+              {/* Address and Contact Info Side by Side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                {/* Address */}
+                <div className="text-black">
+                  <p className="text-base leading-relaxed">
+                    9-4-76/A/2 Nizam Colony ,<br />
+                    HYDERABAD, Telangana,<br />
+                    India - 500008
+                  </p>
+                </div>
+
+                {/* Contact Info */}
+                <div className="space-y-2">
+                  <p className="text-gray-600 text-base">
+                    +1234 567 8910
+                  </p>
+                  <p className="text-gray-600 text-base underline">
+                    info@agasti.com
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right side can be used for additional content if needed */}
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

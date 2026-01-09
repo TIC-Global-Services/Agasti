@@ -67,7 +67,7 @@ export default function AboutTestimonial() {
 
           {/* Attribution */}
           <cite 
-            className="text-base sm:text-lg font-medium tracking-wider uppercase inline-block"
+            className="text-base sm:text-lg font-medium font-gc-palioka tracking-wider uppercase inline-block"
             style={{ 
               color: `rgba(0, 0, 0, ${getWordOpacity(words.length)})`,
               transition: 'color 0.2s ease-out'

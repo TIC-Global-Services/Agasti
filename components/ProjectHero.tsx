@@ -62,34 +62,36 @@ export default function ProjectHero() {
           </div>
         </div>
 
-        <ContainerLayout className="pt-20 sm:pt-24 md:pt-28">
-          {/* Parallax Image */}
-          <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden mb-8 sm:mb-12 md:mb-16">
-            <div
-              style={{
-                transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
-                transition: "transform 0.1s ease-out",
-              }}
-              className="relative w-full h-[160%] -translate-y-[30%]"
-            >
-              <Image
-                src="/mainvilla.jpg"
-                alt="Agasti Projects"
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority
-              />
+        <ContainerLayout className="pt-20 sm:pt-24 md:pt-28" paddingX="px-6 xl:px-[48px] lg:px-[48px]">
+          {/* Parallax Image - Centered */}
+          <div className="flex justify-center -mb-2">
+            <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+              <div
+                style={{
+                  transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                  transition: "transform 0.1s ease-out",
+                }}
+                className="relative w-full h-[120%] -translate-y-[10%]"
+              >
+                <Image
+                  src="projects-imgs/projectshero.jpg"
+                  alt="Agasti Projects"
+                  fill
+                  sizes="1344px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
-          {/* Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-20">
+          {/* Content Grid - Properly aligned below image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-18 mt-3">
             {/* Left Side - Projects Header */}
             <div>
               <p 
                 ref={projectsRef}
-                className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-3 sm:mb-4 font-bold transition-all duration-700 ease-out ${projectsBlur}`}
+                className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-1 sm:mb-2 font-bold transition-all duration-700 ease-out ${projectsBlur}`}
               >
                 Our projects
               </p>
@@ -105,7 +107,7 @@ export default function ProjectHero() {
 
             {/* Right Side - Description */}
             <div className="lg:pt-10 lg:pl-4">
-              <div className="bg-white p-7 sm:p-4 md:p-0 relative">
+              <div className="bg-white p-7 sm:p-4 md:p-0 relative max-w-7xl">
                 <div className="relative">
                   <p className="text-[#717580] text-[16px] sm:text-base leading-relaxed text-right pr-8">
                     Atara is an exclusive community of 18 tropical villas nestled in the heart of Hyderabad’s Financial District. Designed for those who seek calm without compromise, each villa merges architectural finesse with the tranquility of nature. 

@@ -1,0 +1,61 @@
+"use client";
+import Image from "next/image";
+import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+
+export default function ProjectAbout() {
+  // Blur effects for headings
+  const { elementRef: subtitleRef, blurClass: subtitleBlur } = useBlurOnScroll<HTMLParagraphElement>(0.1);
+  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+
+  return (
+    <section className="w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {/* Left Side - Image */}
+        <div className="relative h-[50vh] lg:h-auto">
+          <Image
+            src="aboutus.png"
+            alt="Agasti Project Interior"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        {/* Right Side - Content */}
+        <div className="bg-[#F5F3EE] flex items-center justify-center px-6 py-12 sm:px-8 sm:py-16 md:px-16 lg:px-24">
+          <div className="max-w-xl">
+            <p 
+              ref={subtitleRef}
+              className={`font-gc-palioka text-[#8D957E] text-lg sm:text-xl md:text-[24px] mb-4 tracking-wider font-bold transition-all duration-700 ease-out ${subtitleBlur}`}
+            >
+              Why Choose Agasti
+            </p>
+            
+            <h2 
+              ref={titleRef}
+              className={`font-gc-palioka text-3xl sm:text-4xl md:text-5xl lg:text-[54px] text-black mb-6 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+            >
+              A Commitment to <br />Quality and Timeless <br />Living
+            </h2>
+            
+            <div className="space-y-3 sm:space-y-4 text-gray-600 mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base">
+                Discover Agasti&apos;s exclusive collection of luxury villa communities—
+                each crafted with precision, nature-driven design, and timeless 
+                architectural elegance.
+              </p>
+            </div>
+
+            <button className="text-black text-sm sm:text-base font-medium hover:opacity-70 transition-opacity group">
+              <span className="relative inline-block">
+                Explore Projects
+                <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

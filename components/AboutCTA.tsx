@@ -31,13 +31,13 @@ export default function AboutCTA() {
                 Ready to Experience Agasti
               </h2>
               
-              <p className="text-white text-[16px] sm:text-lg leading-relaxed mb-6 max-w-3xl">
+              <p className="text-white text-[16px] sm:text-lg leading-tight mb-6 max-w-3xl">
                 Step into a world where craftsmanship, nature, and refined design come together to <br />
                 create a truly elevated way of living. Explore our vision, discover our communities, and <br />
                 see how Agasti is shaping the future of luxury villas.
               </p>
 
-              <button className="text-sm font-medium tracking-wider text-white transition-colors duration-300" style={{ backgroundColor: '#FFFFFF4D', width: '197px', height: '50px', borderRadius: '4px' }}>
+              <button className="text-[12px] font-bold tracking-wider text-white transition-colors duration-300" style={{ backgroundColor: '#FFFFFF4D', width: '197px', height: '50px', borderRadius: '4px' }}>
                 SCHEDULE A VISIT
               </button>
             </div>
