@@ -32,12 +32,13 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 bg-white transition-transform duration-300 ease-in-out ${
+      className={`fixed inset-0 z-[9999] bg-white transition-transform duration-300 ease-in-out ${
         isAnimating ? "translate-x-0" : "translate-x-full"
       }`}
+      style={{ zIndex: 9999 }}
     >
-      <div className="flex h-full">
-        {/* Left Side - Image */}
+      <div className="flex h-full w-full">
+        {/* Left Side - Image (Desktop only) */}
         <div className="hidden lg:block lg:w-1/2 relative">
           <Image
             src="/menu-image.jpg"
@@ -49,16 +50,16 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
         </div>
 
         {/* Right Side - Menu Content */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-6 py-12 sm:px-8 md:px-16 lg:px-24 relative">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-16 lg:px-24 relative min-h-screen">
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-8 right-8 text-gray-400 hover:text-black transition-colors"
+            className="absolute top-6 right-6 sm:top-8 sm:right-8 text-gray-400 hover:text-black transition-colors z-10"
             aria-label="Close menu"
           >
             {/* Cross icon for mobile */}
             <svg
-              className="w-6 h-6 sm:hidden"
+              className="w-6 h-6 sm:w-7 sm:h-7 md:hidden"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -71,17 +72,17 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               />
             </svg>
             {/* Text for tablet/desktop */}
-            <span className="hidden sm:inline text-sm tracking-wider">CLOSE</span>
+            <span className="hidden md:inline text-sm tracking-wider">CLOSE</span>
           </button>
 
           {/* Logo */}
-          <div className="mb-12 sm:mb-16">
-            <div className="relative h-[50px] sm:h-[60px] w-auto aspect-[4/1]">
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <div className="relative h-[40px] sm:h-[50px] md:h-[60px] w-auto aspect-[4/1]">
               <Image
                 src="/Agasti_Logo.png"
                 alt="Agasti Logo"
                 fill
-                sizes="(max-width: 640px) 200px, 240px"
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, 240px"
                 className="object-contain"
               />
             </div>
@@ -89,24 +90,24 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
           {/* Navigation Links - Centered */}
           <nav className="mb-auto">
-            <ul className="space-y-4 sm:space-y-6 text-gray-500 text-center">
+            <ul className="space-y-3 sm:space-y-4 md:space-y-6 text-gray-500 text-center">
               <li>
-                <Link href="/" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
+                <Link href="/" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
                   HOME
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
+                <Link href="/about" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
                   ABOUT
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
+                <Link href="/projects" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
                   PROJECTS
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-black transition-colors text-base sm:text-lg" onClick={handleClose}>
+                <Link href="/contact" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
                   CONTACT
                 </Link>
               </li>
@@ -114,37 +115,37 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
           </nav>
 
           {/* Footer Content */}
-          <div className="absolute bottom-8 sm:bottom-12 left-6 right-6 sm:left-8 sm:right-8 md:left-16 md:right-16 lg:left-24 lg:right-24 w-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8">
+          <div className="absolute bottom-4 sm:bottom-8 md:bottom-12 left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 lg:left-24 lg:right-24 w-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 md:mb-8">
               {/* Need Support */}
               <div className="text-center sm:text-left">
-                <h3 className="font-semibold mb-2 text-gray-700">NEED SUPPORT?</h3>
-                <p>INFO@AGASTI.COM</p>
+                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">NEED SUPPORT?</h3>
+                <p className="text-xs sm:text-sm">INFO@AGASTI.COM</p>
               </div>
 
               {/* Address */}
               <div className="text-center sm:text-right">
-                <h3 className="font-semibold mb-2 text-gray-700">ADDRESS</h3>
-                <p>AGASTIESTATES, GACHIBOWLI,</p>
-                <p>HYDERABAD - 500032</p>
+                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">ADDRESS</h3>
+                <p className="text-xs sm:text-sm">AGASTIESTATES, GACHIBOWLI,</p>
+                <p className="text-xs sm:text-sm">HYDERABAD - 500032</p>
               </div>
 
               {/* Socials */}
               <div className="text-center sm:text-left">
-                <h3 className="font-semibold mb-2 text-gray-700">SOCIALS</h3>
+                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">SOCIALS</h3>
                 <ul className="space-y-1">
                   <li>
-                    <a href="#" className="hover:text-black transition-colors">
+                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
                       INSTAGRAM
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-black transition-colors">
+                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
                       FACEBOOK
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-black transition-colors">
+                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
                       TWITTER
                     </a>
                   </li>
@@ -153,13 +154,13 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
               {/* Customer Care */}
               <div className="text-center sm:text-right">
-                <h3 className="font-semibold mb-2 text-gray-700">CUSTOMER CARE</h3>
-                <p>+1 234 567 8910</p>
+                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">CUSTOMER CARE</h3>
+                <p className="text-xs sm:text-sm">+1 234 567 8910</p>
               </div>
             </div>
 
             {/* Bottom Links */}
-            <div className="flex justify-between items-center text-xs text-gray-400">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 text-xs text-gray-400">
               <a href="#" className="hover:text-black transition-colors">
                 PRIVACY POLICY
               </a>

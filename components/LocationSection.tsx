@@ -3,7 +3,7 @@ import ContainerLayout from "@/layout/ContainerLayout";
 
 export default function LocationSection() {
   return (
-    <section className="bg-white py-8 sm:py-12 md:py-16 mt-48">
+    <section className="bg-white py-8 sm:py-12 md:py-16 mt-8 sm:mt-48">
       <ContainerLayout>
         <div className="bg-[#E8E6E1] rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">

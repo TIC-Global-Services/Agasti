@@ -27,14 +27,14 @@ export default function ProjectAbout() {
           <div className="max-w-xl">
             <p 
               ref={subtitleRef}
-              className={`font-gc-palioka text-[#8D957E] text-lg sm:text-xl md:text-[24px] mb-4 tracking-wider font-bold transition-all duration-700 ease-out ${subtitleBlur}`}
+              className={`font-gc-palioka text-[#8D957E] text-[20px] sm:text-xl md:text-[24px] mb-4 tracking-wider font-bold transition-all duration-700 ease-out ${subtitleBlur}`}
             >
               Why Choose Agasti
             </p>
             
             <h2 
               ref={titleRef}
-              className={`font-gc-palioka text-3xl sm:text-4xl md:text-5xl lg:text-[54px] text-black mb-6 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+              className={`font-gc-palioka text-[20px] sm:text-4xl md:text-5xl lg:text-[54px] text-black mb-6 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
             >
               A Commitment to <br />Quality and Timeless <br />Living
             </h2>

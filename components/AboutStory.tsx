@@ -63,9 +63,31 @@ export default function AboutStory() {
         </div>
 
         <ContainerLayout className="pt-20 sm:pt-24 md:pt-28" paddingX="px-6 xl:px-[48px] lg:px-[48px]">
-          {/* Parallax Image - Centered */}
-          <div className="flex justify-center mb-1 sm:mb-2 md:mb-3">
-            <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+          {/* Mobile Layout */}
+          <div className="block lg:hidden">
+            {/* Mobile Content - Above Image */}
+            <div className="mb-6">
+              <p 
+                ref={storyRef}
+                className={`text-[#8D957E] font-gc-palioka text-[16px] mb-2 font-normal transition-all duration-700 ease-out ${storyBlur}`}
+              >
+                Our story
+              </p>
+              <h1 
+                ref={titleRef}
+                className={`font-gc-palioka text-[20px] sm:text-[28px] text-black leading-[1.1] tracking-[-0.03em] mb-4 transition-all duration-700 ease-out ${titleBlur}`}
+              >
+                Crafting Luxury Villas
+                <br />
+                Since <span className="font-bold">2018</span>
+              </h1>
+              <p className="text-[#717580] text-[14px] leading-relaxed">
+                From lush landscapes to world-class amenities, each home reflects precision, elegance, and timeless craftsmanship.
+              </p>
+            </div>
+
+            {/* Mobile Image */}
+            <div className="relative overflow-hidden rounded-lg" style={{ width: '100%', height: '400px' }}>
               <div
                 style={{
                   transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
@@ -77,7 +99,7 @@ export default function AboutStory() {
                   src="/mainvilla.jpg"
                   alt="Agasti Villa Architecture"
                   fill
-                  sizes="1344px"
+                  sizes="100vw"
                   className="object-cover"
                   priority
                 />
@@ -85,35 +107,60 @@ export default function AboutStory() {
             </div>
           </div>
 
-          {/* Content Grid - Properly aligned below image */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-20">
-            {/* Left Side - Story Header */}
-            <div>
-              <p 
-                ref={storyRef}
-                className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-3 sm:mb-4 font-bold transition-all duration-700 ease-out ${storyBlur}`}
-              >
-                Our story
-              </p>
-              <h1 
-                ref={titleRef}
-                className={`font-gc-palioka text-[28px] sm:text-3xl md:text-4xl lg:text-[54px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
-              >
-                Crafting Luxury Villas
-                <br />
-                Since <span className="font-bold">2018</span>
-              </h1>
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            {/* Parallax Image - Centered */}
+            <div className="flex justify-center mb-1 sm:mb-2 md:mb-3">
+              <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+                <div
+                  style={{
+                    transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                    transition: "transform 0.1s ease-out",
+                  }}
+                  className="relative w-full h-[120%] -translate-y-[10%]"
+                >
+                  <Image
+                    src="/mainvilla.jpg"
+                    alt="Agasti Villa Architecture"
+                    fill
+                    sizes="1344px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Right Side - Description */}
-            <div className="lg:pt-10 lg:pl-4">
-              <div className="bg-white p-7 sm:p-4 md:p-0 relative">
-                <div className="relative">
-                  <p className="text-[#717580] text-[16px] sm:text-base leading-relaxed text-right pr-8">
-                    From lush landscapes to world-class amenities, each <br />home reflects precision, elegance, and timeless<br /> craftsmanship.
-                  </p>
-                  {/* Vertical line on the right side */}
-                  <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-black"></div>
+            {/* Content Grid - Properly aligned below image */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-20">
+              {/* Left Side - Story Header */}
+              <div>
+                <p 
+                  ref={storyRef}
+                  className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-3 sm:mb-4 font-bold transition-all duration-700 ease-out ${storyBlur}`}
+                >
+                  Our story
+                </p>
+                <h1 
+                  ref={titleRef}
+                  className={`font-gc-palioka text-[20px] sm:text-3xl md:text-4xl lg:text-[54px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
+                >
+                  Crafting Luxury Villas
+                  <br />
+                  Since <span className="font-bold">2018</span>
+                </h1>
+              </div>
+
+              {/* Right Side - Description */}
+              <div className="lg:pt-10 lg:pl-4">
+                <div className="bg-white p-7 sm:p-4 md:p-0 relative">
+                  <div className="relative">
+                    <p className="text-[#717580] text-[16px] sm:text-base leading-relaxed text-right pr-8">
+                      From lush landscapes to world-class amenities, each <br />home reflects precision, elegance, and timeless<br /> craftsmanship.
+                    </p>
+                    {/* Vertical line on the right side */}
+                    <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-black"></div>
+                  </div>
                 </div>
               </div>
             </div>

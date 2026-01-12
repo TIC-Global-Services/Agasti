@@ -18,7 +18,7 @@ export default function InsideVilla({ showTitle = true, showPadding = true }: In
       {showTitle && (
         <h2 
           ref={titleRef}
-          className={`font-gc-palioka text-3xl sm:text-4xl md:text-[34px] text-black mb-12 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+          className={`font-gc-palioka text-[20px] sm:text-4xl md:text-[34px] text-black mb-12 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
         >
           Inside The Villa
         </h2>
@@ -78,8 +78,8 @@ export default function InsideVilla({ showTitle = true, showPadding = true }: In
 
   if (showPadding) {
     return (
-      <section className="bg-white py-16 sm:py-20 md:py-24">
-        <ContainerLayout paddingX="px-6 xl:px-[48px] lg:px-[48px]">
+      <section className="bg-white py-0 sm:py-16 md:py-20 lg:py-24">
+        <ContainerLayout paddingX="px-0 sm:px-6 xl:px-[48px] lg:px-[48px]">
           {content}
         </ContainerLayout>
       </section>

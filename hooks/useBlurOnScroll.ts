@@ -2,7 +2,20 @@ import { useEffect, useRef, useState } from "react";
 
 export const useBlurOnScroll = <T extends HTMLElement = HTMLElement>(threshold: number = 0.2) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<T>(null);
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -11,7 +24,7 @@ export const useBlurOnScroll = <T extends HTMLElement = HTMLElement>(threshold: 
       },
       {
         threshold,
-        rootMargin: "0px 0px 0px 0px"
+        rootMargin: "50px 0px 50px 0px"
       }
     );
 
@@ -26,9 +39,12 @@ export const useBlurOnScroll = <T extends HTMLElement = HTMLElement>(threshold: 
     };
   }, [threshold]);
 
-  const blurClass = isVisible 
-    ? 'filter-none opacity-100' 
-    : 'filter blur-sm opacity-70';
+  // No blur effect on mobile, blur effect on desktop
+  const blurClass = isMobile 
+    ? '' // No animation classes on mobile
+    : (isVisible 
+        ? 'filter-none opacity-100' 
+        : 'filter blur-sm opacity-70');
 
   return { elementRef, blurClass, isVisible };
 };

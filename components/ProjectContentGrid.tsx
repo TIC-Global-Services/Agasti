@@ -22,7 +22,7 @@ export default function ProjectContentGrid() {
             </p>
             <h2 
               ref={titleRef}
-              className={`font-gc-palioka text-[28px] sm:text-3xl md:text-4xl lg:text-[32px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
+              className={`font-gc-palioka text-[20px] sm:text-3xl md:text-4xl lg:text-[32px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
             >
               Continuing the Agasti
               <br />

@@ -63,9 +63,31 @@ export default function ContactHero() {
         </div>
 
         <ContainerLayout className="pt-20 sm:pt-24 md:pt-28" paddingX="px-6 xl:px-[48px] lg:px-[48px]">
-          {/* Parallax Image - Centered */}
-          <div className="flex justify-center -mb-2">
-            <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+          {/* Mobile Layout */}
+          <div className="block lg:hidden">
+            {/* Mobile Content - Above Image */}
+            <div className="mb-6">
+              <p 
+                ref={contactRef}
+                className={`text-[#8D957E] font-gc-palioka text-[16px] mb-2 font-normal transition-all duration-700 ease-out ${contactBlur}`}
+              >
+                Crafting Connections that last
+              </p>
+              <h1 
+                ref={titleRef}
+                className={`font-gc-palioka text-[20px] sm:text-[28px] text-black leading-[1.1] tracking-[-0.03em] mb-4 transition-all duration-700 ease-out ${titleBlur}`}
+              >
+                Let's Build Your Dream
+                <br />
+                Villa Together
+              </h1>
+              <p className="text-[#717580] text-[14px] leading-relaxed">
+                Reach out, our team is here to guide you every step of the way, turning your vision of luxury living into a beautiful reality.
+              </p>
+            </div>
+
+            {/* Mobile Image */}
+            <div className="relative overflow-hidden rounded-lg" style={{ width: '100%', height: '400px' }}>
               <div
                 style={{
                   transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
@@ -77,7 +99,7 @@ export default function ContactHero() {
                   src="/contact-us/contactusbanner.jpg"
                   alt="Contact Agasti"
                   fill
-                  sizes="1344px"
+                  sizes="100vw"
                   className="object-cover"
                   priority
                 />
@@ -85,36 +107,61 @@ export default function ContactHero() {
             </div>
           </div>
 
-          {/* Content Grid - Properly aligned below image */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-18 mt-2">
-            {/* Left Side - Contact Header */}
-            <div className="lg:col-span-2">
-              <p 
-                ref={contactRef}
-                className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-1 sm:mb-2 font-bold transition-all duration-700 ease-out ${contactBlur}`}
-              >
-                Crafting Connections that last
-              </p>
-              <h1 
-                ref={titleRef}
-                className={`font-gc-palioka text-[28px] sm:text-3xl md:text-4xl lg:text-[54px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
-              >
-                Let's Build Your Dream
-                <br />
-                Villa Together
-              </h1>
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            {/* Parallax Image - Centered */}
+            <div className="flex justify-center -mb-2">
+              <div className="relative overflow-hidden" style={{ width: '1344px', height: '500px', maxWidth: '100%' }}>
+                <div
+                  style={{
+                    transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                    transition: "transform 0.1s ease-out",
+                  }}
+                  className="relative w-full h-[120%] -translate-y-[10%]"
+                >
+                  <Image
+                    src="/contact-us/contactusbanner.jpg"
+                    alt="Contact Agasti"
+                    fill
+                    sizes="1344px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Right Side - Description */}
-            <div className="lg:pt-10 lg:pl-4 lg:col-span-2">
-              <div className="bg-white p-7 sm:p-0 md:p-0 relative max-w-8xl">
-                <div className="relative">
-                  <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-black"></div>
-                  <p className="text-[#717580] text-[16px] sm:text-base leading-relaxed text-right pl-10 pr-8">
-                    Reach out,  our team is here to guide you every step of the way, turning your vision of luxury living into a beautiful reality.
-                  </p>
-                  {/* Vertical line on the left side */}
-                  
+            {/* Content Grid - Properly aligned below image */}
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 md:pb-18 mt-2">
+              {/* Left Side - Contact Header */}
+              <div className="lg:col-span-2">
+                <p 
+                  ref={contactRef}
+                  className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-1 sm:mb-2 font-bold transition-all duration-700 ease-out ${contactBlur}`}
+                >
+                  Crafting Connections that last
+                </p>
+                <h1 
+                  ref={titleRef}
+                  className={`font-gc-palioka text-[28px] sm:text-3xl md:text-4xl lg:text-[54px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
+                >
+                  Let's Build Your Dream
+                  <br />
+                  Villa Together
+                </h1>
+              </div>
+
+              {/* Right Side - Description */}
+              <div className="lg:pt-10 lg:pl-4 lg:col-span-2">
+                <div className="bg-white p-7 sm:p-0 md:p-0 relative max-w-8xl">
+                  <div className="relative">
+                    <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-black"></div>
+                    <p className="text-[#717580] text-[16px] sm:text-base leading-relaxed text-right pl-10 pr-8">
+                      Reach out,  our team is here to guide you every step of the way, turning your vision of luxury living into a beautiful reality.
+                    </p>
+                    {/* Vertical line on the left side */}
+                    
+                  </div>
                 </div>
               </div>
             </div>

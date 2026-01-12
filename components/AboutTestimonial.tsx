@@ -46,15 +46,15 @@ export default function AboutTestimonial() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-[#F0EDE4] py-12 sm:py-16 md:py-20 min-h-screen flex items-center">
+    <section ref={sectionRef} className="bg-[#F0EDE4] py-12 sm:py-16 md:py-20 lg:min-h-screen lg:flex lg:items-center">
       <ContainerLayout paddingX="px-6 xl:px-[48px] lg:px-[48px]">
         <div className="max-w-5xl mx-auto text-center">
           {/* Main Quote - Word by Word */}
-          <blockquote className="font-gc-palioka text-[54px] leading-[1.1] mb-12 sm:mb-16 text-center">
+          <blockquote className="font-gc-palioka text-[20px] sm:text-[36px] lg:text-[54px] leading-[1.1] mb-8 sm:mb-12 lg:mb-16 text-center">
             {words.map((word, index) => (
               <span
                 key={index}
-                className="inline-block mr-3 sm:mr-4"
+                className="inline-block mr-2 sm:mr-3 lg:mr-4"
                 style={{ 
                   color: `rgba(0, 0, 0, ${getWordOpacity(index)})`,
                   transition: 'color 0.2s ease-out'
@@ -67,7 +67,7 @@ export default function AboutTestimonial() {
 
           {/* Attribution */}
           <cite 
-            className="text-base sm:text-lg font-medium font-gc-palioka tracking-wider uppercase inline-block"
+            className="text-sm sm:text-base lg:text-lg font-medium font-gc-palioka tracking-wider uppercase inline-block"
             style={{ 
               color: `rgba(0, 0, 0, ${getWordOpacity(words.length)})`,
               transition: 'color 0.2s ease-out'
