@@ -33,8 +33,8 @@ export default function LocationSection() {
             </div>
 
             {/* Right Side - Map */}
-            <div className="relative h-[300px] sm:h-[400px] lg:h-auto lg:min-h-[400px] p-4 sm:p-6 lg:p-8">
-              <div className="relative w-full h-full overflow-hidden rounded">
+            <div className="relative h-[300px] sm:h-[400px] lg:h-auto lg:min-h-[400px] p-4 sm:p-6 lg:p-8 bg-[#F0EDE4]">
+              <div className="relative w-full h-full overflow-hidden rounded bg-[#F0EDE4]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.87257665632!2d78.1792147!3d17.465811899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbee5d7d3a293d%3A0x84b36b8b9bc70b0d!2sBhanur%2C%20Telangana%20502305!5e0!3m2!1sen!2sin!4v1765877925651!5m2!1sen!2sin"
                   width="100%"

@@ -32,10 +32,10 @@ export default function SmartFutureHomes() {
         <div className="mb-8 sm:mb-12">
           <p className="text-[#8D957E] text-sm sm:text-base md:text-lg mb-6 sm:mb-2">Smart, Future-Ready Engineering</p>
           
-          {/* Side by side layout for heading and paragraph */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-6 items-start">
-            {/* Left side - Heading (smaller container) */}
-            <div className="lg:col-span-3">
+          {/* Responsive layout for heading and paragraph */}
+          <div className="block xl:grid xl:grid-cols-5 xl:gap-6 xl:items-start">
+            {/* Heading */}
+            <div className="xl:col-span-3 mb-6 xl:mb-0">
               <h2 
                 ref={titleRef}
                 className={`font-gc-palioka text-[20px] sm:text-2xl md:text-3xl lg:text-[32px] text-black leading-tight transition-all duration-700 ease-out ${titleBlur}`}
@@ -44,8 +44,8 @@ export default function SmartFutureHomes() {
               </h2>
             </div>
             
-            {/* Right side - Paragraph (moved further left) */}
-            <div className="lg:col-span-2 lg:-ml-12">
+            {/* Paragraph */}
+            <div className="xl:col-span-2 xl:-ml-12">
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
                 Agasti homes use advanced structures, planned MEP systems, quality waterproofing, and solar integration to ensure long-term durability, easy upkeep, and a modern living experience built for the future.
               </p>
