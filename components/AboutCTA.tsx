@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import Link from "next/link";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 export default function AboutCTA() {
-  // Blur effects for headings
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effect for headings
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
   return (
-    <section className="bg-white py-[40px]">
+    <section className="bg-white py-[80px]">
       <div className="px-6 sm:px-[48px]">
         {/* Mobile Layout */}
         <div className="block sm:hidden">
@@ -20,15 +21,20 @@ export default function AboutCTA() {
               className="object-cover"
             />
             
-            {/* Blue Overlay */}
-            <div className="absolute inset-0 bg-blue-200 opacity-60 z-5"></div>
+            {/* Linear Gradient Overlay */}
+            <div 
+              className="absolute inset-0 z-5"
+              style={{
+                background: 'linear-gradient(86.34deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)'
+              }}
+            ></div>
             
             {/* Text Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center items-start z-10 p-6">
               <div className="text-left text-black max-w-full">
                 <h2 
                   ref={titleRef}
-                  className={`font-gc-palioka text-[20px] mb-4 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+                  className="font-gc-palioka text-[20px] mb-4 leading-tight"
                 >
                   Ready to Experience Agasti
                 </h2>
@@ -37,9 +43,11 @@ export default function AboutCTA() {
                   Step into a world where craftsmanship, nature, and refined design come together to create a truly elevated way of living. Explore our vision, discover our communities, and see how Agasti is shaping the future of luxury villas.
                 </p>
 
-                <button className="text-[10px] font-bold tracking-wider text-white bg-[#FFFFFF4D] px-4 py-2 rounded transition-colors duration-300 hover:bg-opacity-80">
-                  SCHEDULE A VISIT
-                </button>
+                <Link href="/contact">
+                  <button className="text-[10px] font-bold tracking-wider text-white bg-[#FFFFFF4D] px-4 py-2 rounded transition-colors duration-300 hover:bg-white hover:text-[#87CEEB]">
+                    SCHEDULE A VISIT
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -57,15 +65,20 @@ export default function AboutCTA() {
               className="object-cover"
             />
             
-            {/* Blue Overlay */}
-            <div className="absolute inset-0 bg-blue-200 opacity-60 z-5"></div>
+            {/* Linear Gradient Overlay */}
+            <div 
+              className="absolute inset-0 z-5"
+              style={{
+                background: 'linear-gradient(86.34deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)'
+              }}
+            ></div>
             
             {/* Text Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center items-center z-10 p-8">
               <div className="text-center text-black max-w-lg mx-auto">
                 <h2 
                   ref={titleRef}
-                  className={`font-gc-palioka text-[28px] mb-6 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+                  className="font-gc-palioka text-[28px] mb-6 leading-tight"
                 >
                   Ready to Experience Agasti
                 </h2>
@@ -74,9 +87,11 @@ export default function AboutCTA() {
                   Step into a world where craftsmanship, nature, and refined design come together to create a truly elevated way of living. Explore our vision, discover our communities, and see how Agasti is shaping the future of luxury villas.
                 </p>
 
-                <button className="text-[12px] font-bold tracking-wider text-white bg-[#FFFFFF4D] px-6 py-3 rounded transition-colors duration-300 hover:bg-opacity-80">
-                  SCHEDULE A VISIT
-                </button>
+                <Link href="/contact">
+                  <button className="text-[12px] font-bold tracking-wider text-white bg-[#FFFFFF4D] px-6 py-3 rounded transition-colors duration-300 hover:bg-white hover:text-[#87CEEB]">
+                    SCHEDULE A VISIT
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -94,15 +109,20 @@ export default function AboutCTA() {
               className="object-cover"
             />
             
-            {/* Black Overlay */}
-            <div className="absolute inset-0 bg-black opacity-10 z-5"></div>
+            {/* Linear Gradient Overlay */}
+            <div 
+              className="absolute inset-0 z-5"
+              style={{
+                background: 'linear-gradient(86.34deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)'
+              }}
+            ></div>
             
             {/* Text Overlay */}
             <div className="absolute top-0 right-0 flex items-start justify-end z-10 p-10">
               <div className="text-right text-black max-w-3xl">
                 <h2 
                   ref={titleRef}
-                  className={`font-gc-palioka text-[34px] mb-3 leading-tight font-regular transition-all duration-700 ease-out ${titleBlur}`}
+                  className="font-gc-palioka text-[34px] mb-3 leading-tight font-regular"
                 >
                   Ready to Experience Agasti
                 </h2>
@@ -113,9 +133,11 @@ export default function AboutCTA() {
                   see how Agasti is shaping the future of luxury villas.
                 </p>
 
-                <button className="text-[12px] font-bold tracking-wider text-white bg-[#FFFFFF4D] w-[197px] h-[50px] rounded transition-colors duration-300 hover:bg-opacity-80">
-                  SCHEDULE A VISIT
-                </button>
+                <Link href="/contact">
+                  <button className="text-[12px] font-bold tracking-wider text-white bg-[#FFFFFF4D] w-[197px] h-[50px] rounded transition-colors duration-300 hover:bg-white hover:text-[#87CEEB]">
+                    SCHEDULE A VISIT
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -2,17 +2,18 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import ContainerLayout from "@/layout/ContainerLayout";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 export default function AboutCommitments() {
   const [translateX, setTranslateX] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const animationRef = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Blur effects for headings
-  const { elementRef: commitmentsRef, blurClass: commitmentsBlur } = useBlurOnScroll<HTMLParagraphElement>(0.1);
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: commitmentsRef } = useLetterReveal<HTMLParagraphElement>(0.1);
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -47,11 +48,13 @@ export default function AboutCommitments() {
     const totalWidth = cardWidth * commitments.length;
 
     const animate = () => {
-      setTranslateX(prev => {
-        const newValue = prev - 1; // Move 1px per frame for smooth scroll
-        // Reset when we've scrolled through one complete set
-        return newValue <= -totalWidth ? 0 : newValue;
-      });
+      if (!isPaused) {
+        setTranslateX(prev => {
+          const newValue = prev - 0.5; // Move 0.5px per frame for slower, smoother scroll
+          // Reset when we've scrolled through one complete set
+          return newValue <= -totalWidth ? 0 : newValue;
+        });
+      }
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -79,7 +82,7 @@ export default function AboutCommitments() {
       }
       mediaQuery.removeEventListener('change', handleMediaChange);
     };
-  }, [commitments.length]);
+  }, [commitments.length, isPaused]);
 
   return (
     <section className="bg-white pt-[85px]">
@@ -96,16 +99,16 @@ export default function AboutCommitments() {
       }} />
       <ContainerLayout paddingX="px-6 xl:px-[48px] lg:px-[48px]">
         {/* Header */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-6 sm:mb-10">
           <p 
             ref={commitmentsRef}
-            className={`text-[#8D957E] text-[20px] sm:text-[24px] font-bold mb-4 transition-all duration-700 ease-out ${commitmentsBlur}`}
+            className="text-[#8D957E] text-[20px] sm:text-[24px] font-bold mb-4"
           >
             Our commitments
           </p>
           <h2 
             ref={titleRef}
-            className={`font-gc-palioka text-[20px] sm:text-3xl md:text-[32px] lg:text-[32px] text-black leading-tight max-w-4xl transition-all duration-700 ease-out ${titleBlur}`}
+            className="font-gc-palioka text-[20px] sm:text-3xl md:text-[32px] lg:text-[32px] text-black leading-tight max-w-4xl"
           >
             With every Agasti Villa, we aim to deliver outcomes that prioritize quality, comfort, and long-term value.
           </h2>
@@ -183,6 +186,8 @@ export default function AboutCommitments() {
               key={index} 
               className="flex-shrink-0"
               style={{ width: '678px', paddingRight: '16px' }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             >
               <div className="group">
                 {/* Image */}

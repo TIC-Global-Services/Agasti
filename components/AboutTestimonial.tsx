@@ -12,7 +12,7 @@ export default function AboutTestimonial() {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        // Start animation when section is 80% visible, complete when section is 20% past top
+        // Start animation when section is 60% visible (delayed start), complete when section is 20% past top
         const startPoint = windowHeight * 0.8;
         const endPoint = -rect.height * 0.2;
         
@@ -33,34 +33,37 @@ export default function AboutTestimonial() {
   }, []);
 
   // Better line breaks that maintain natural flow
-  const quoteText = "\"Kiron Cheerla Architecture Design is dedicated to designing buildings that go beyond function and aesthetics, integrating structure, context, client needs, materials, and technology. The firm critically engages with the site to create solutions that feel intrinsic to their surroundings, as if the building had always been there. Its work seeks to recall the fundamental elements of architecture, enabling flexibility across scales, materials, and programs-transcending styles. With a strong commitment to building, the firm continually explores innovative approaches to enhance the built environment.\"";
+  const quoteText = "Kiron Cheerla Architecture Design creates context-driven architecture that integrates structure, materials, technology, and client needs. The firm designs buildings rooted in fundamental architectural principles that feel intrinsic to their surroundings while exploring innovative approaches to the built environment.";
   
-  // Split into words for more granular control
-  const words = quoteText.split('8');
+  // Split into groups of 3 letters for more granular control
+  const letterGroups = [];
+  for (let i = 0; i < quoteText.length; i += 3) {
+    letterGroups.push(quoteText.slice(i, i + 3));
+  }
   
-  // Calculate opacity for each word based on scroll progress
-  const getWordOpacity = (wordIndex: number) => {
-    const totalWords = words.length;
-    const wordProgress = (scrollProgress * totalWords * 1.3) - wordIndex; // Multiply by 1.2 for faster progression
-    return Math.max(0.15, Math.min(1, 0.15 + wordProgress * 0.85)); // From 15% to 100% opacity
+  // Calculate opacity for each letter group based on scroll progress
+  const getLetterGroupOpacity = (groupIndex: number) => {
+    const totalGroups = letterGroups.length;
+    const groupProgress = (scrollProgress * totalGroups * 1.1) - groupIndex; // Multiply by 1.3 for faster progression
+    return Math.max(0.15, Math.min(1, 0.15 + groupProgress * 0.85)); // From 15% to 100% opacity
   };
 
   return (
     <section ref={sectionRef} className="bg-[#F0EDE4] py-12 sm:py-16 md:py-20 lg:min-h-screen lg:flex lg:items-center">
       <ContainerLayout paddingX="px-6 xl:px-[48px] lg:px-[48px]">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Main Quote - Word by Word */}
+          {/* Main Quote - Letter Group by Letter Group */}
           <blockquote className="font-gc-palioka text-[20px] sm:text-[36px] lg:text-[54px] leading-[1.1] mb-8 sm:mb-12 lg:mb-16 text-center">
-            {words.map((word, index) => (
+            {letterGroups.map((group, index) => (
               <span
                 key={index}
-                className="inline-block mr-2 sm:mr-3 lg:mr-4"
+                className="inline"
                 style={{ 
-                  color: `rgba(0, 0, 0, ${getWordOpacity(index)})`,
+                  color: `rgba(0, 0, 0, ${getLetterGroupOpacity(index)})`,
                   transition: 'color 0.2s ease-out'
                 }}
               >
-                {word}
+                {group}
               </span>
             ))}
           </blockquote>
@@ -69,7 +72,7 @@ export default function AboutTestimonial() {
           <cite 
             className="text-sm sm:text-base lg:text-lg font-medium font-gc-palioka tracking-wider uppercase inline-block"
             style={{ 
-              color: `rgba(0, 0, 0, ${getWordOpacity(words.length)})`,
+              color: `rgba(0, 0, 0, ${getLetterGroupOpacity(letterGroups.length)})`,
               transition: 'color 0.2s ease-out'
             }}
           >

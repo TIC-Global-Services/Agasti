@@ -66,8 +66,8 @@ export const useLetterReveal = <T extends HTMLElement = HTMLElement>(threshold: 
           span.style.display = 'inline';
           span.style.filter = 'blur(4px)';
           span.style.opacity = '0.3';
-          span.style.transition = 'filter 0.3s ease-out, opacity 0.3s ease-out';
-          span.style.transitionDelay = `${i * 20}ms`;
+          span.style.transition = 'filter 0.15s ease-out, opacity 0.15s ease-out';
+          span.style.transitionDelay = `${i * 10}ms`;
           fragment.appendChild(span);
         }
         
@@ -102,7 +102,7 @@ export const useLetterReveal = <T extends HTMLElement = HTMLElement>(threshold: 
       setTimeout(() => {
         (span as HTMLElement).style.filter = 'blur(0px)';
         (span as HTMLElement).style.opacity = '1';
-      }, 100 + (index * 20));
+      }, 50 + (index * 10));
     });
   };
 

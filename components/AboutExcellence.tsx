@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ContainerLayout from "@/layout/ContainerLayout";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 export default function AboutExcellence() {
   const [isVisionVisible, setIsVisionVisible] = useState(false);
@@ -12,12 +12,12 @@ export default function AboutExcellence() {
   const visionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  // Blur effects for headings
-  const { elementRef: excellenceRef, blurClass: excellenceBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: excellenceTitleRef, blurClass: excellenceTitleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: visionTitleRef, blurClass: visionTitleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: craftsmanshipRef, blurClass: craftsmanshipBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: sustainabilityRef, blurClass: sustainabilityBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: excellenceRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: excellenceTitleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: visionTitleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: craftsmanshipRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: sustainabilityRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   // Animation for stats numbers
   useEffect(() => {
@@ -105,6 +105,232 @@ export default function AboutExcellence() {
   }, []);
   return (
     <section className="bg-white">
+      <style jsx>{`
+        .glass-card {
+          width: 275px;
+          height: 289px;
+          background: rgba(255, 255, 255, 0.09);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(6px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 0px 0px rgba(255, 255, 255, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+        .glass-card-mobile {
+          background: rgba(255, 255, 255, 0.09);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 10px 5px rgba(255, 255, 255, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card-mobile::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card-mobile::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+        .glass-card-content {
+          background: rgba(255, 255, 255, 0.09);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 10px 5px rgba(255, 255, 255, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card-content::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+        .glass-card-vision {
+          background: rgba(255, 255, 255, 0.24);
+          backdrop-filter: blur(40px) saturate(150%);
+          -webkit-backdrop-filter: blur(40px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 4px 1px rgba(255, 255, 255, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card-vision::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card-vision::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+        .glass-card-craftsmanship {
+          background: rgba(255, 255, 255, 0.24);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.24);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 4px 1px rgba(255, 255, 255, 0.01);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card-craftsmanship::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card-craftsmanship::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+        .glass-card-sustainability {
+          background: rgba(255, 255, 255, 0.70);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                      inset 0 0 10px 5px rgba(255, 255, 255, 0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .glass-card-sustainability::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg,
+                      transparent,
+                      rgba(255, 255, 255, 0.8),
+                      transparent);
+        }
+        .glass-card-sustainability::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg,
+                      rgba(255, 255, 255, 0.8),
+                      transparent,
+                      rgba(255, 255, 255, 0.3));
+        }
+      `}</style>
       {/* Top Section - Built on Excellence with Stats */}
       <div className="relative">
         {/* Background Image */}
@@ -137,7 +363,7 @@ export default function AboutExcellence() {
             {/* Mobile Stats Cards - Stacked Vertically */}
             <div className="space-y-4 md:grid md:grid-cols-3 md:gap-4 md:space-y-0" ref={statsRef}>
               {/* 7+ Years */}
-              <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-[10px] p-6 mx-auto max-w-sm md:max-w-none">
+              <div className="glass-card-mobile p-6 mx-auto max-w-sm md:max-w-none">
                 <div className="text-center">
                   <div className="mb-3">
                     <div className="text-black text-[64px] font-bold leading-none mb-1">
@@ -152,7 +378,7 @@ export default function AboutExcellence() {
               </div>
 
               {/* 18 Signature Villas */}
-              <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-[10px] p-6 mx-auto max-w-sm md:max-w-none">
+              <div className="glass-card-mobile p-6 mx-auto max-w-sm md:max-w-none">
                 <div className="text-center">
                   <div className="mb-3">
                     <div className="text-black text-[64px] font-bold leading-none mb-1">
@@ -167,7 +393,7 @@ export default function AboutExcellence() {
               </div>
 
               {/* 95% Client Satisfaction */}
-              <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-[10px] p-6 mx-auto max-w-sm md:max-w-none">
+              <div className="glass-card-mobile p-6 mx-auto max-w-sm md:max-w-none">
                 <div className="text-center">
                   <div className="mb-3">
                     <div className="text-black text-[64px] font-bold leading-none mb-1">
@@ -185,70 +411,74 @@ export default function AboutExcellence() {
 
           {/* Desktop Layout */}
           <div className="hidden lg:block">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-4 items-start px-[48px]">
-              {/* Left Side - Built on Excellence */}
-              <div className="lg:col-span-1 flex flex-col gap-[10px]" style={{ width: '435.00439453125px', height: '220px' }}>
-                <h2 
-                  ref={excellenceRef}
-                  className={`text-white font-gc-palioka-demo text-[20px] sm:text-[24px] font-bold transition-all duration-700 ease-out ${excellenceBlur}`}
-                >
-                  Built on Excellence
-                </h2>
-                <h3 
-                  ref={excellenceTitleRef}
-                  className={`font-gc-palioka text-[#262B35] text-[20px] sm:text-3xl md:text-[32px] leading-tight transition-all duration-700 ease-out ${excellenceTitleBlur}`}
-                >
-                  Where every property reflects uncompromised quality
-                </h3>
-                <p className="text-[#3C3C3C]/80 text-[16px] font-regular leading-tight font-plus-jakarta-sans">
-                  Building exclusive communities for individuals who seek refined elegance, elevated comfort, and a truly distinguished way of living.
-                </p>
-              </div>
-
-              {/* Stats Cards */}
-              <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 items-start ml-24" ref={statsRef}>
-                {/* 7+ Years */}
-                <div className="bg-white/10 backdrop-blur-sm border-[5.29px] border-white/20 rounded-[10px] flex flex-col p-6 -mr-4" style={{ width: '275px', height: '289px' }}>
-                  <div className="flex-grow-0 mb-4">
-                    <div className="text-black text-[74px] font-bold leading-none mb-1">
-                      {animatedNumbers.years}+
-                    </div>
-                    <div className="text-black text-[18px] font-bold font-gc-palioka-demo">Years of Excellence</div>
-                  </div>
-                  <div className="mt-auto">
-                    <p className="text-black text-[14px] font-regular font-plus-jakarta-sans leading-relaxed">
-                      delivering premium Villas <br />since 2018
-                    </p>
-                  </div>
+            <div className="px-[48px]">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                {/* Left Side - Built on Excellence */}
+                <div className="flex-shrink-0 lg:w-[435px] flex flex-col gap-[10px]">
+                  <h2 
+                    ref={excellenceRef}
+                    className="text-white font-gc-palioka-demo text-[20px] sm:text-[24px] font-bold"
+                  >
+                    Built on Excellence
+                  </h2>
+                  <h3 
+                    ref={excellenceTitleRef}
+                    className="font-gc-palioka text-[#262B35] text-[20px] sm:text-3xl md:text-[32px] leading-tight"
+                  >
+                    Where every property reflects uncompromised quality
+                  </h3>
+                  <p className="text-[#3C3C3C]/80 text-[16px] font-regular leading-tight font-plus-jakarta-sans">
+                    Building exclusive communities for individuals who seek refined elegance, elevated comfort, and a truly distinguished way of living.
+                  </p>
                 </div>
 
-                {/* 18 Signature Villas */}
-                <div className="bg-white/10 backdrop-blur-sm border-[5.29px] border-white/20 rounded-[10px] flex flex-col p-6 -mr-4" style={{ width: '275px', height: '289px' }}>
-                  <div className="flex-grow-0 mb-4">
-                    <div className="text-black text-[74px] font-urbanist font-bold leading-none mb-1">
-                      {animatedNumbers.villas}
+                {/* Stats Cards */}
+                <div className="flex-1 min-w-0" ref={statsRef}>
+                  <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 justify-items-center xl:justify-items-start">
+                    {/* 7+ Years */}
+                    <div className="glass-card flex flex-col p-6">
+                      <div className="flex-grow-0 mb-4">
+                        <div className="text-black text-[74px] font-bold leading-none mb-1">
+                          {animatedNumbers.years}+
+                        </div>
+                        <div className="text-black text-[18px] font-bold font-gc-palioka-demo">Years of Excellence</div>
+                      </div>
+                      <div className="mt-auto">
+                        <p className="text-black text-[14px] font-regular font-plus-jakarta-sans leading-relaxed">
+                          delivering premium Villas <br />since 2018
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-black text-[18px] font-bold font-gc-palioka-demo">Signature Villas</div>
-                  </div>
-                  <div className="mt-auto">
-                    <p className="text-black text-[14px] font-regular font-plus-jakarta-sans leading-relaxed">
-                      crafted with precision and refined exclusivity
-                    </p>
-                  </div>
-                </div>
 
-                {/* 95% Client Satisfaction */}
-                <div className="bg-white/10 backdrop-blur-sm border-[5.29px] border-white/20 rounded-[10px] flex flex-col p-6" style={{ width: '275px', height: '289px' }}>
-                  <div className="flex-grow-0 mb-4">
-                    <div className="text-black text-[74px] font-bold leading-none mb-1">
-                      {animatedNumbers.satisfaction}%
+                    {/* 18 Signature Villas */}
+                    <div className="glass-card flex flex-col p-6">
+                      <div className="flex-grow-0 mb-4">
+                        <div className="text-black text-[74px] font-urbanist font-bold leading-none mb-1">
+                          {animatedNumbers.villas}
+                        </div>
+                        <div className="text-black text-[18px] font-bold font-gc-palioka-demo">Signature Villas</div>
+                      </div>
+                      <div className="mt-auto">
+                        <p className="text-black text-[14px] font-regular font-plus-jakarta-sans leading-relaxed">
+                          crafted with precision and refined exclusivity
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-black text-[18px] font-gc-palioka-demo font-bold">Client Satisfaction</div>
-                  </div>
-                  <div className="mt-auto">
-                    <p className="text-black text-[14px] font-plus-jakarta-sans font-regular leading-relaxed">
-                      reflecting our commitment to quality and trust
-                    </p>
+
+                    {/* 95% Client Satisfaction */}
+                    <div className="glass-card flex flex-col p-6">
+                      <div className="flex-grow-0 mb-4">
+                        <div className="text-black text-[74px] font-bold leading-none mb-1">
+                          {animatedNumbers.satisfaction}%
+                        </div>
+                        <div className="text-black text-[18px] font-gc-palioka-demo font-bold">Client Satisfaction</div>
+                      </div>
+                      <div className="mt-auto">
+                        <p className="text-black text-[14px] font-plus-jakarta-sans font-regular leading-relaxed">
+                          reflecting our commitment to quality and trust
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -274,7 +504,7 @@ export default function AboutExcellence() {
         <div className="block lg:hidden">
           <ContainerLayout className="relative z-10 py-16 flex items-center justify-center min-h-[600px]" paddingX="px-6">
             <div 
-              className={`bg-white/40 p-6 md:p-8 rounded-lg border-2 border-white max-w-sm md:max-w-md w-full text-center transition-all duration-1000 ease-out ${
+              className={`glass-card-vision p-6 md:p-8 max-w-sm md:max-w-md w-full text-center transition-all duration-1000 ease-out ${
                 isVisionVisible 
                   ? 'translate-y-0 opacity-100' 
                   : 'translate-y-8 opacity-0'
@@ -282,7 +512,7 @@ export default function AboutExcellence() {
             >
               <h3 
                 ref={visionTitleRef}
-                className={`font-gc-palioka text-2xl md:text-3xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${visionTitleBlur}`}
+                className="font-gc-palioka text-2xl md:text-3xl text-black leading-tight mb-4"
               >
                 Our Vision
                 <br />
@@ -300,7 +530,7 @@ export default function AboutExcellence() {
           <ContainerLayout className="relative z-10 py-16 sm:py-20 md:py-24 h-[600px]" paddingX="px-6 xl:px-[48px] lg:px-[48px]">
             <div className="absolute bottom-8 right-8">
               <div 
-                className={`max-w-xl bg-white/40 p-8 rounded-lg border-2 border-white transition-all duration-1000 ease-out ${
+                className={`max-w-xl glass-card-vision p-8 transition-all duration-1000 ease-out ${
                   isVisionVisible 
                     ? 'translate-x-0 opacity-100' 
                     : 'translate-x-full opacity-0'
@@ -308,7 +538,7 @@ export default function AboutExcellence() {
               >
                 <h3 
                   ref={visionTitleRef}
-                  className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none tracking-[-0.02] mb-6 transition-all duration-700 ease-out ${visionTitleBlur}`}
+                  className="font-gc-palioka text-2xl sm:text-3xl text-black leading-none tracking-[-0.02] mb-6"
                 >
                   Our Vision
                   <br />
@@ -340,10 +570,10 @@ export default function AboutExcellence() {
           
           {/* Mobile Layout */}
           <div className="block sm:hidden relative z-10 py-16 flex items-start justify-center min-h-[600px] px-6 pt-20">
-            <div className="bg-white/40 p-6 rounded-lg max-w-sm w-full border-2 border-white text-center">
+            <div className="glass-card-craftsmanship p-6 max-w-sm w-full text-center">
               <h3 
                 ref={craftsmanshipRef}
-                className={`font-gc-palioka text-2xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${craftsmanshipBlur}`}
+                className="font-gc-palioka text-2xl text-black leading-tight mb-4"
               >
                 Craftsmanship
                 <br />
@@ -357,10 +587,10 @@ export default function AboutExcellence() {
 
           {/* Tablet Layout */}
           <div className="hidden sm:block lg:hidden relative z-10 py-16 flex items-start justify-center min-h-[700px] px-6 pt-20">
-            <div className="bg-white/40 p-8 rounded-lg max-w-md w-full border-2 border-white text-center mx-auto">
+            <div className="glass-card-craftsmanship p-8 max-w-md w-full text-center mx-auto">
               <h3 
                 ref={craftsmanshipRef}
-                className={`font-gc-palioka text-3xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${craftsmanshipBlur}`}
+                className="font-gc-palioka text-3xl text-black leading-tight mb-4"
               >
                 Craftsmanship
                 <br />
@@ -374,10 +604,10 @@ export default function AboutExcellence() {
 
           {/* Desktop Layout */}
           <div className="hidden lg:block relative z-10 p-8 sm:p-12 md:p-16 min-h-[600px] flex items-start">
-            <div className="bg-white/40 p-6 rounded-lg max-w-sm border-2 border-white">
+            <div className="glass-card-craftsmanship p-6 max-w-sm">
               <h3 
                 ref={craftsmanshipRef}
-                className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-4 transition-all duration-700 ease-out ${craftsmanshipBlur}`}
+                className="font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-4"
               >
                 Craftsmanship
                 <br />
@@ -405,10 +635,10 @@ export default function AboutExcellence() {
           
           {/* Mobile Layout */}
           <div className="block sm:hidden relative z-10 py-16 flex items-center justify-center min-h-[600px] px-6">
-            <div className="bg-white/40 p-6 rounded-lg max-w-sm w-full border-2 border-white text-center">
+            <div className="glass-card-sustainability p-6 max-w-sm w-full text-center">
               <h3 
                 ref={sustainabilityRef}
-                className={`font-gc-palioka text-2xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${sustainabilityBlur}`}
+                className="font-gc-palioka text-2xl text-black leading-tight mb-4"
               >
                 Sustainability
                 <br />
@@ -422,10 +652,10 @@ export default function AboutExcellence() {
 
           {/* Tablet Layout */}
           <div className="hidden sm:block lg:hidden relative z-10 py-16 flex items-center justify-center min-h-[700px] px-6">
-            <div className="bg-white/40 p-8 rounded-lg max-w-md w-full border-2 border-white text-center">
+            <div className="glass-card-sustainability p-8 max-w-md w-full text-center">
               <h3 
                 ref={sustainabilityRef}
-                className={`font-gc-palioka text-3xl text-black leading-tight mb-4 transition-all duration-700 ease-out ${sustainabilityBlur}`}
+                className="font-gc-palioka text-3xl text-black leading-tight mb-4"
               >
                 Sustainability
                 <br />
@@ -440,10 +670,10 @@ export default function AboutExcellence() {
           {/* Desktop Layout */}
           <div className="hidden lg:block relative z-10 h-[600px]">
             <div className="absolute bottom-16 right-12">
-              <div className="bg-white/80 p-8 rounded-lg max-w-[435px] border-2 border-white">
+              <div className="glass-card-sustainability p-8 max-w-[435px]">
                 <h3 
                   ref={sustainabilityRef}
-                  className={`font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-6 transition-all duration-700 ease-out ${sustainabilityBlur}`}
+                  className="font-gc-palioka text-2xl sm:text-3xl text-black leading-none mb-6"
                 >
                   Sustainability
                   <br />
