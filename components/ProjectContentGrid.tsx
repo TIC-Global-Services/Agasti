@@ -1,11 +1,11 @@
 "use client";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 import ContainerLayout from "@/layout/ContainerLayout";
 
 export default function ProjectContentGrid() {
-  // Blur effects for headings
-  const { elementRef: sectionRef, blurClass: sectionBlur } = useBlurOnScroll<HTMLParagraphElement>(0.1);
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: sectionRef } = useLetterReveal<HTMLParagraphElement>(0.1);
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   return (
     <section className="bg-white">
@@ -16,13 +16,13 @@ export default function ProjectContentGrid() {
           <div>
             <p 
               ref={sectionRef}
-              className={`text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-[24px] mb-3 sm:mb-4 font-regular transition-all duration-700 ease-out ${sectionBlur}`}
+              className="text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-[24px] mb-3 sm:mb-4 font-regular"
             >
               Upcoming Projects
             </p>
             <h2 
               ref={titleRef}
-              className={`font-gc-palioka text-[20px] sm:text-3xl md:text-4xl lg:text-[32px] text-black leading-[1.1] tracking-[-0.03em] transition-all duration-700 ease-out ${titleBlur}`}
+              className="font-gc-palioka text-[20px] sm:text-3xl md:text-4xl lg:text-[32px] text-black leading-[1.1] tracking-[-0.03em]"
             >
               Continuing the Agasti
               <br />

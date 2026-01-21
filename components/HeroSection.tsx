@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import MenuOverlay from "./MenuOverlay";
 
 export default function HeroSection() {
@@ -34,7 +35,7 @@ export default function HeroSection() {
               
               {/* Centered AGASTI Logo */}
               <div className="flex-1 flex justify-center">
-                <div className="relative h-[36px] sm:h-[44px] w-auto aspect-[4/1]">
+                <Link href="/" className="relative h-[36px] sm:h-[44px] w-auto aspect-[4/1] hover:opacity-80 transition-opacity">
                   <Image
                     src="/Agasti_Logo.png"
                     alt="Agasti Logo"
@@ -42,7 +43,7 @@ export default function HeroSection() {
                     sizes="(max-width: 640px) 144px, 176px"
                     className="object-contain"
                   />
-                </div>
+                </Link>
               </div>
               
               {/* Hamburger Menu - Top Right */}

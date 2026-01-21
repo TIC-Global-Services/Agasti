@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 export default function ProjectAbout() {
-  // Blur effects for headings
-  const { elementRef: subtitleRef, blurClass: subtitleBlur } = useBlurOnScroll<HTMLParagraphElement>(0.1);
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: subtitleRef } = useLetterReveal<HTMLParagraphElement>(0.1);
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   return (
     <section className="w-full">
@@ -27,14 +27,14 @@ export default function ProjectAbout() {
           <div className="max-w-xl">
             <p 
               ref={subtitleRef}
-              className={`font-gc-palioka text-[#8D957E] text-[20px] sm:text-xl md:text-[24px] mb-[14px] tracking-wider font-bold transition-all duration-700 ease-out ${subtitleBlur}`}
+              className="font-gc-palioka text-[#8D957E] text-[20px] sm:text-xl md:text-[24px] mb-[14px] tracking-wider font-bold"
             >
               Why Choose Agasti
             </p>
             
             <h2 
               ref={titleRef}
-              className={`font-gc-palioka text-[20px] sm:text-4xl md:text-5xl lg:text-[54px] text-black mb-3 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+              className="font-gc-palioka text-[20px] sm:text-4xl md:text-5xl lg:text-[54px] text-black mb-3 leading-tight"
             >
               A Commitment to <br />Quality and Timeless <br />Living
             </h2>

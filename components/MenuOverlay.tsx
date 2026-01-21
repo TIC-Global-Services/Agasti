@@ -13,11 +13,13 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
   useEffect(() => {
     if (isOpen) {
-      // Use a microtask to avoid synchronous setState in effect
-      Promise.resolve().then(() => setIsAnimating(true));
+      // Small delay to ensure the component is mounted before animating
+      const timer = setTimeout(() => setIsAnimating(true), 10);
+      return () => clearTimeout(timer);
     } else {
-      // Use a microtask for consistency
-      Promise.resolve().then(() => setIsAnimating(false));
+      // Use a timeout to avoid synchronous setState in effect
+      const timer = setTimeout(() => setIsAnimating(false), 0);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
@@ -25,14 +27,14 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
     setIsAnimating(false);
     setTimeout(() => {
       onClose();
-    }, 300);
+    }, 500); // Match the transition duration
   };
 
   if (!isOpen) return null;
 
   return (
     <div 
-      className={`fixed inset-0 z-[9999] bg-white transition-transform duration-300 ease-in-out ${
+      className={`fixed inset-0 z-[9999] bg-white transition-transform duration-500 ease-out ${
         isAnimating ? "translate-x-0" : "translate-x-full"
       }`}
       style={{ zIndex: 9999 }}
@@ -50,7 +52,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
         </div>
 
         {/* Right Side - Menu Content */}
-        <div className="w-full xl:w-1/2 flex flex-col items-center justify-center px-6 py-8 sm:px-8 sm:py-12 md:px-16 xl:px-24 relative min-h-screen">
+        <div className="w-full xl:w-1/2 flex flex-col items-center justify-center px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-12 lg:py-12 xl:px-24 relative min-h-screen">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -76,38 +78,42 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
           </button>
 
           {/* Logo */}
-          <div className="mb-8 sm:mb-12 md:mb-16">
-            <div className="relative h-[40px] sm:h-[50px] md:h-[60px] w-auto aspect-[4/1]">
+          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+            <Link 
+              href="/" 
+              onClick={onClose}
+              className="relative h-[32px] sm:h-[40px] md:h-[50px] lg:h-[60px] w-auto aspect-[4/1] hover:opacity-80 transition-opacity inline-block"
+            >
               <Image
                 src="/Agasti_Logo.png"
                 alt="Agasti Logo"
                 fill
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, 240px"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, (max-width: 1024px) 200px, 240px"
                 className="object-contain"
               />
-            </div>
+            </Link>
           </div>
 
           {/* Navigation Links - Centered */}
           <nav className="mb-auto">
-            <ul className="space-y-3 sm:space-y-4 md:space-y-6 text-gray-500 text-center">
+            <ul className="space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6 text-gray-500 text-center">
               <li>
-                <Link href="/" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
+                <Link href="/" className="hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide" onClick={handleClose}>
                   HOME
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
+                <Link href="/about" className="hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide" onClick={handleClose}>
                   ABOUT
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
+                <Link href="/projects" className="hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide" onClick={handleClose}>
                   PROJECTS
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-black transition-colors text-sm sm:text-base md:text-lg font-medium tracking-wide" onClick={handleClose}>
+                <Link href="/contact" className="hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-medium tracking-wide" onClick={handleClose}>
                   CONTACT
                 </Link>
               </li>
@@ -115,52 +121,58 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
           </nav>
 
           {/* Footer Content */}
-          <div className="w-full max-w-2xl xl:max-w-none">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 md:mb-8">
-              {/* Need Support */}
-              <div className="text-left">
-                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">NEED SUPPORT?</h3>
-                <p className="text-xs sm:text-sm">INFO@AGASTI.COM</p>
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-none mt-[10px] lg:mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-[190px] text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 md:mb-8">
+              {/* Left Column */}
+              <div className="space-y-4 sm:space-y-6 md:space-y-8">
+                {/* Need Support */}
+                <div className="text-left">
+                  <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">NEED SUPPORT?</h3>
+                  <p className="text-xs sm:text-sm">INFO@AGASTI.COM</p>
+                </div>
+
+                {/* Socials */}
+                <div className="text-left">
+                  <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">SOCIALS</h3>
+                  <ul className="space-y-1">
+                    <li>
+                      <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
+                        INSTAGRAM
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
+                        FACEBOOK
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
+                        TWITTER
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              {/* Address */}
-              <div className="text-left pl-4 sm:pl-6 md:pl-8">
-                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">ADDRESS</h3>
-                <p className="text-xs sm:text-sm">AGASTIESTATES, GACHIBOWLI,</p>
-                <p className="text-xs sm:text-sm">HYDERABAD - 500032</p>
-              </div>
+              {/* Right Column */}
+              <div className="space-y-4 sm:space-y-6 md:space-y-8">
+                {/* Address */}
+                <div className="text-left">
+                  <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">ADDRESS</h3>
+                  <p className="text-xs sm:text-sm">AGASTIESTATES, GACHIBOWLI,</p>
+                  <p className="text-xs sm:text-sm">HYDERABAD - 500032</p>
+                </div>
 
-              {/* Socials */}
-              <div className="text-left">
-                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">SOCIALS</h3>
-                <ul className="space-y-1">
-                  <li>
-                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
-                      INSTAGRAM
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
-                      FACEBOOK
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-black transition-colors text-xs sm:text-sm">
-                      TWITTER
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Customer Care */}
-              <div className="text-left pl-4 sm:pl-6 md:pl-8">
-                <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">CUSTOMER CARE</h3>
-                <p className="text-xs sm:text-sm">+1 234 567 8910</p>
+                {/* Customer Care */}
+                <div className="text-left">
+                  <h3 className="font-semibold mb-1 sm:mb-2 text-gray-700 text-xs sm:text-sm">CUSTOMER CARE</h3>
+                  <p className="text-xs sm:text-sm">+1 234 567 8910</p>
+                </div>
               </div>
             </div>
 
             {/* Bottom Links */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 text-xs text-gray-400">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-[190px] items-center text-xs text-gray-400">
               <a href="#" className="hover:text-black transition-colors">
                 PRIVACY POLICY
               </a>

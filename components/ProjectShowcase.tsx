@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import ContainerLayout from "@/layout/ContainerLayout";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 export default function ProjectShowcase() {
-  // Blur effects for headings
-  const { elementRef: titleRef1, blurClass: titleBlur1 } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: titleRef2, blurClass: titleBlur2 } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: titleRef1 } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: titleRef2 } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   return (
     <section className="bg-white">
@@ -201,7 +201,7 @@ export default function ProjectShowcase() {
             <div className="lg:col-span-1">
               <h2 
                 ref={titleRef1}
-                className={`font-gc-palioka text-3xl sm:text-4xl md:text-[45px] text-black mb-4 leading-none transition-all duration-700 ease-out ${titleBlur1}`}
+                className="font-gc-palioka text-3xl sm:text-4xl md:text-[45px] text-black mb-4 leading-none"
               >
                 Agasti Verve
               </h2>
@@ -254,7 +254,7 @@ export default function ProjectShowcase() {
             <div className="lg:col-span-1">
               <h2 
                 ref={titleRef2}
-                className={`font-gc-palioka text-3xl sm:text-4xl md:text-[44px] text-black mb-4 leading-none transition-all duration-700 ease-out ${titleBlur2}`}
+                className="font-gc-palioka text-3xl sm:text-4xl md:text-[44px] text-black mb-4 leading-none"
               >
                 Agasti Arbor
               </h2>

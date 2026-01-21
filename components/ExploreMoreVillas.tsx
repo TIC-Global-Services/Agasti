@@ -1,11 +1,15 @@
 "use client";
 import Image from "next/image";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 interface ExploreMoreVillasProps {
   currentVilla: 'zenith' | 'crest' | 'horizon';
 }
 
 export default function ExploreMoreVillas({ currentVilla }: ExploreMoreVillasProps) {
+  // Letter reveal effect for heading
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+
   const getOtherVillas = () => {
     switch (currentVilla) {
       case 'zenith':
@@ -57,14 +61,19 @@ export default function ExploreMoreVillas({ currentVilla }: ExploreMoreVillasPro
   return (
     <section className="bg-white py-12">
       <div className="px-5">
-        <h4 className="font-gc-palioka text-[20px] sm:text-[34px] md:text-[28px] lg:text-[34px] text-black mb-6 sm:mb-8">Explore More Villas of This Kind</h4>
+        <h4 
+          ref={titleRef}
+          className="font-gc-palioka text-[20px] sm:text-[34px] md:text-[28px] lg:text-[34px] text-black mb-6 sm:mb-8"
+        >
+          Explore More Villas of This Kind
+        </h4>
         
         {/* Mobile Layout */}
         <div className="block sm:hidden">
           <div className="space-y-8">
             {otherVillas.map((villa, index) => (
               <div key={index} className="group">
-                <div className="relative overflow-hidden mb-4 rounded-lg aspect-[16/10] w-full">
+                <div className="relative overflow-hidden mb-4 rounded-lg aspect-16/10 w-full">
                   <Image
                     src={villa.image}
                     alt={villa.name}

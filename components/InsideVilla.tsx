@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import ContainerLayout from "@/layout/ContainerLayout";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 
 interface InsideVillaProps {
   showTitle?: boolean;
@@ -9,8 +9,8 @@ interface InsideVillaProps {
 }
 
 export default function InsideVilla({ showTitle = true, showPadding = true }: InsideVillaProps) {
-  // Blur effect for heading
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
+  // Letter reveal effect for heading
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   const content = (
     <>
@@ -18,7 +18,7 @@ export default function InsideVilla({ showTitle = true, showPadding = true }: In
       {showTitle && (
         <h2 
           ref={titleRef}
-          className={`font-gc-palioka text-[20px] sm:text-4xl md:text-[34px] text-black mb-12 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+          className="font-gc-palioka text-[20px] sm:text-4xl md:text-[34px] text-black mb-12 leading-tight"
         >
           Inside The Villa
         </h2>

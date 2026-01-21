@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ContainerLayout from "@/layout/ContainerLayout";
-import { useBlurOnScroll } from "@/hooks/useBlurOnScroll";
+import { useLetterReveal } from "@/hooks/useLetterReveal";
 import InsideVilla from "./InsideVilla";
 import ExploreMoreVillas from "./ExploreMoreVillas";
 
@@ -127,9 +127,13 @@ export default function ProjectVillaDescription() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const secondImageRef = useRef<HTMLDivElement>(null);
   
-  // Blur effects for headings
-  const { elementRef: titleRef, blurClass: titleBlur } = useBlurOnScroll<HTMLHeadingElement>(0.1);
-  const { elementRef: subtitleRef, blurClass: subtitleBlur } = useBlurOnScroll<HTMLParagraphElement>(0.1);
+  // Letter reveal effects for headings
+  const { elementRef: titleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: subtitleRef } = useLetterReveal<HTMLParagraphElement>(0.1);
+  const { elementRef: crestTitleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: horizonTitleRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: crestTitleMobileRef } = useLetterReveal<HTMLHeadingElement>(0.1);
+  const { elementRef: horizonTitleMobileRef } = useLetterReveal<HTMLHeadingElement>(0.1);
 
   const toggleVillaDetails = (villaName: string) => {
     setExpandedVilla(expandedVilla === villaName ? null : villaName);
@@ -216,7 +220,7 @@ export default function ProjectVillaDescription() {
 
             {/* Property Details */}
             {!expandedVilla && (
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-2 gap-4 mb-3">
                 <div>
                   <span className="text-black text-[16px] font-bold block mb-1">Property size:</span>
                   <span className="text-[#8D957E]-500 text-[14px]">653 <span className="font-bold">sq yds</span></span>
@@ -294,7 +298,7 @@ export default function ProjectVillaDescription() {
 
             {expandedVilla === 'zenith' && <ExploreMoreVillas currentVilla="zenith" />}
             
-            {!expandedVilla && <hr className="border-gray-300 mb-8" />}
+            {!expandedVilla && <hr className="border-gray-300 mb-4" />}
           </div>
 
           {/* Villa 2 - Crest */}
@@ -303,7 +307,10 @@ export default function ProjectVillaDescription() {
               <div className="flex flex-col justify-between items-start mb-4">
                 <div className="mb-4 w-full">
                   <div className="flex justify-between items-start mb-2">
-                    <h2 className="font-gc-palioka text-[20px] sm:text-[28px] md:text-[32px] text-black leading-tight">
+                    <h2 
+                      ref={crestTitleMobileRef}
+                      className="font-gc-palioka text-[20px] sm:text-[28px] md:text-[32px] text-black leading-tight"
+                    >
                       The Agasti Crest
                     </h2>
                     <button 
@@ -437,7 +444,10 @@ export default function ProjectVillaDescription() {
               <div className="flex flex-col justify-between items-start mb-4">
                 <div className="mb-4 w-full">
                   <div className="flex justify-between items-start mb-2">
-                    <h2 className="font-gc-palioka text-[20px] sm:text-[28px] md:text-[32px] text-black leading-tight">
+                    <h2 
+                      ref={horizonTitleMobileRef}
+                      className="font-gc-palioka text-[20px] sm:text-[28px] md:text-[32px] text-black leading-tight"
+                    >
                       The Agasti Horizon
                     </h2>
                     <button 
@@ -473,7 +483,7 @@ export default function ProjectVillaDescription() {
                 </div>
               </div>
 
-              <div className="relative overflow-hidden mb-6 rounded-lg h-[400px]">
+              <div className="relative overflow-hidden mb-6  h-[400px]">
                 <Image
                   src="/projects-imgs/agastihorizon.jpg"
                   alt="The Agasti Horizon Villa"
@@ -508,7 +518,7 @@ export default function ProjectVillaDescription() {
           {/* Expanded Content for Horizon */}
           {expandedVilla === 'horizon' && (
             <>
-              <div className="relative overflow-hidden mb-6 rounded-lg h-[400px]">
+              <div className="relative overflow-hidden mb-6 h-[400px]">
                 <Image
                   src="/projects-imgs/agastihorizon.jpg"
                   alt="The Agasti Horizon Villa"
@@ -571,7 +581,7 @@ export default function ProjectVillaDescription() {
             <div className="mb-4 sm:mb-0">
               <h2 
                 ref={titleRef}
-                className={`font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight transition-all duration-700 ease-out ${titleBlur}`}
+                className="font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight"
               >
                 The Agasti Zenith
               </h2>
@@ -587,7 +597,7 @@ export default function ProjectVillaDescription() {
                 </div>
                 <p 
                   ref={subtitleRef}
-                  className={`text-gray-600 text-sm sm:text-[20px] transition-all duration-700 ease-out ${subtitleBlur}`}
+                  className="text-gray-600 text-sm sm:text-[20px]"
                 >
                   West facing villa
                 </p>
@@ -613,13 +623,13 @@ export default function ProjectVillaDescription() {
           </div>
           {/* Parallax Image */}
           {!expandedVilla && (
-            <div className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+            <div className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
               <div
                 style={{
-                  transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                  transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                   transition: "transform 0.1s ease-out",
                 }}
-                className="relative w-full h-[120%] -translate-y-[10%]"
+                className="relative w-full h-[130%] -translate-y-[15%]"
               >
                 <Image
                   src="/mainvilla.jpg"
@@ -670,13 +680,13 @@ export default function ProjectVillaDescription() {
           {expandedVilla === 'zenith' && (
             <>
               {/* Zenith Villa Image when expanded */}
-              <div className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+              <div className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
                 <div
                   style={{
-                    transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                    transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                     transition: "transform 0.1s ease-out",
                   }}
-                  className="relative w-full h-[120%] -translate-y-[10%]"
+                  className="relative w-full h-[130%] -translate-y-[15%]"
                 >
                   <Image
                     src="/mainvilla.jpg"
@@ -765,7 +775,10 @@ export default function ProjectVillaDescription() {
           {!expandedVilla && (
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12">
               <div className="mb-4 sm:mb-0">
-                <h2 className="font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight transition-all duration-700 ease-out">
+                <h2 
+                  ref={crestTitleRef}
+                  className="font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight"
+                >
                   The Agasti Crest
                 </h2>
                 <div className="flex items-center">
@@ -778,7 +791,7 @@ export default function ProjectVillaDescription() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-gray-600 text-sm sm:text-[20px] transition-all duration-700 ease-out">
+                  <p className="text-gray-600 text-sm sm:text-[20px]">
                     East facing villa
                   </p>
                 </div>
@@ -805,13 +818,13 @@ export default function ProjectVillaDescription() {
 
           {/* Second Villa Parallax Image */}
           {!expandedVilla && (
-            <div className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+            <div className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
               <div
                 style={{
-                  transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                  transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                   transition: "transform 0.1s ease-out",
                 }}
-                className="relative w-full h-[120%] -translate-y-[10%]"
+                className="relative w-full h-[130%] -translate-y-[15%]"
               >
                 <Image
                   src="projects-imgs/AgastiCrest.jpg"
@@ -862,13 +875,13 @@ export default function ProjectVillaDescription() {
           {expandedVilla === 'crest' && (
             <>
               {/* Crest Villa Image when expanded */}
-              <div className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+              <div className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
                 <div
                   style={{
-                    transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                    transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                     transition: "transform 0.1s ease-out",
                   }}
-                  className="relative w-full h-[120%] -translate-y-[10%]"
+                  className="relative w-full h-[130%] -translate-y-[15%]"
                 >
                   <Image
                     src="/projects-imgs/AgastiCrest.jpg"
@@ -957,7 +970,10 @@ export default function ProjectVillaDescription() {
           {!expandedVilla && (
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12">
               <div className="mb-4 sm:mb-0">
-                <h2 className="font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight transition-all duration-700 ease-out">
+                <h2 
+                  ref={horizonTitleRef}
+                  className="font-gc-palioka text-[20px] sm:text-4xl md:text-[44px] lg:text-[44px] text-black mb-2 leading-tight"
+                >
                   The Agasti Horizon
                 </h2>
                 <div className="flex items-center">
@@ -970,7 +986,7 @@ export default function ProjectVillaDescription() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-gray-600 text-sm sm:text-[20px] transition-all duration-700 ease-out">
+                  <p className="text-gray-600 text-sm sm:text-[20px]">
                     North facing villa
                   </p>
                 </div>
@@ -997,13 +1013,13 @@ export default function ProjectVillaDescription() {
 
           {/* Third Villa Parallax Image */}
           {!expandedVilla && (
-            <div ref={secondImageRef} className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+            <div ref={secondImageRef} className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
               <div
                 style={{
-                  transform: `translateY(${Math.min(0, offsetY2 * 3)}px)`,
+                  transform: `translateY(${Math.min(0, offsetY2 * 2)}px) scale(1.1)`,
                   transition: "transform 0.1s ease-out",
                 }}
-                className="relative w-full h-[120%] -translate-y-[10%]"
+                className="relative w-full h-[130%] -translate-y-[15%]"
               >
                 <Image
                   src="/projects-imgs/agastihorizon.jpg"
@@ -1054,13 +1070,13 @@ export default function ProjectVillaDescription() {
           {expandedVilla === 'horizon' && (
             <>
               {/* Horizon Villa Image when expanded */}
-              <div ref={secondImageRef} className="relative overflow-hidden mb-8 sm:mb-12 rounded-lg" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
+              <div ref={secondImageRef} className="overflow-hidden mb-8 sm:mb-12" style={{ width: '1344px', height: '444px', maxWidth: '100%' }}>
                 <div
                   style={{
-                    transform: `translateY(${Math.min(0, offsetY2 * 3)}px)`,
+                    transform: `translateY(${Math.min(0, offsetY2 * 2)}px) scale(1.1)`,
                     transition: "transform 0.1s ease-out",
                   }}
-                  className="relative w-full h-[120%] -translate-y-[10%]"
+                  className="relative w-full h-[130%] -translate-y-[15%]"
                 >
                   <Image
                     src="/projects-imgs/agastihorizon.jpg"

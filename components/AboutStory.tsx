@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ContainerLayout from "@/layout/ContainerLayout";
 import MenuOverlay from "./MenuOverlay";
 import { useLetterReveal } from "@/hooks/useLetterReveal";
@@ -17,8 +18,11 @@ export default function AboutStory() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (imageRef.current) {
-        const rect = imageRef.current.getBoundingClientRect();
+      // Use imageRef for mobile, imageContainerRef for desktop
+      const targetRef = window.innerWidth >= 1024 ? imageContainerRef.current : imageRef.current;
+      
+      if (targetRef) {
+        const rect = targetRef.getBoundingClientRect();
         const scrollProgress = Math.max(0, -rect.top / (rect.height + window.innerHeight));
         setOffsetY((scrollProgress - 0.3) * 100);
       }
@@ -40,7 +44,7 @@ export default function AboutStory() {
             
             {/* Centered AGASTI Logo */}
             <div className="flex-1 flex justify-center">
-              <div className="relative h-[36px] sm:h-[44px] w-auto aspect-[4/1]">
+              <Link href="/" className="relative h-[36px] sm:h-[44px] w-auto aspect-[4/1] hover:opacity-80 transition-opacity">
                 <Image
                   src="/Agasti_Logo.png"
                   alt="Agasti Logo"
@@ -48,7 +52,7 @@ export default function AboutStory() {
                   sizes="(max-width: 640px) 144px, 176px"
                   className="object-contain"
                 />
-              </div>
+              </Link>
             </div>
             
             {/* Hamburger Menu - Top Right */}
@@ -90,15 +94,14 @@ export default function AboutStory() {
             {/* Mobile Image */}
             <div 
               ref={imageRef}
-              className="relative overflow-hidden rounded-lg h-[400px] md:h-[500px]" 
-              style={{ width: '100%' }}
+              className="overflow-hidden h-[400px] md:h-[500px] w-full mb-[10px]"
             >
               <div
                 style={{
-                  transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                  transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                   transition: "transform 0.1s ease-out",
                 }}
-                className="relative w-full h-[120%] -translate-y-[10%]"
+                className="relative w-full h-[130%] -translate-y-[15%]"
               >
                 <Image
                   src="/mainvilla.jpg"
@@ -115,15 +118,15 @@ export default function AboutStory() {
           {/* Desktop Layout */}
           <div className="hidden lg:block">
             {/* Parallax Image Container - Isolated */}
-            <div className="mb-1 sm:mb-1 md:mb-0.5 lg:mb-2">
-              <div className="relative overflow-hidden h-[500px] w-full">
+            <div className="mb-0">
+              <div className="overflow-hidden h-[500px] w-full">
                 <div
                   ref={imageContainerRef}
                   style={{
-                    transform: `translateY(${Math.min(0, offsetY * 3)}px)`,
+                    transform: `translateY(${Math.min(0, offsetY * 2)}px) scale(1.1)`,
                     transition: "transform 0.1s ease-out",
                   }}
-                  className="relative w-full h-[120%] -translate-y-[10%]"
+                  className="relative w-full h-[130%] -translate-y-[15%]"
                 >
                   <Image
                     src="/mainvilla.jpg"
@@ -138,12 +141,12 @@ export default function AboutStory() {
             </div>
 
             {/* Content Grid - Properly aligned below image */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 items-start pb-12 sm:pb-16 md:pb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 items-start pt-6 pb-12 sm:pb-16 md:pb-20">
               {/* Left Side - Story Header */}
               <div>
                 <p 
                   ref={storyRef}
-                  className="text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-2 sm:mb-4 font-bold"
+                  className="text-[#8D957E] font-gc-palioka text-[22px] sm:text-base md:text-lg mb-2 sm:mb-2 font-bold"
                 >
                   Our story
                 </p>

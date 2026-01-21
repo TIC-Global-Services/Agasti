@@ -168,122 +168,122 @@ export default function ContactForm() {
 
       {/* Tablet Layout */}
       <div className="hidden sm:block lg:hidden">
-        <div className="flex justify-center">
+        <div className="relative w-full">
           {/* Background Image Container */}
-          <div className="relative" style={{ width: '1440px', height: '500px', maxWidth: '100%' }}>
+          <div className="relative w-full h-[400px] sm:h-[500px]">
             <Image
               src="/contact-us/contactformbg.png"
               alt="Contact Form Background"
               fill
-              sizes="1440px"
+              sizes="100vw"
               className="object-cover"
               priority
             />
-            
-            {/* Form Overlay - centered */}
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/6" style={{ width: '580px', height: '660px' }}>
-              <div className="bg-white shadow-lg p-8 pr-12">
-                <div className="text-center mb-8">
-                  <h2 className="font-gc-palioka text-[45px] text-black mb-2 leading-tight">
-                    We&apos;ll get in touch with
-                    <br />
-                    you soon
-                  </h2>
+          </div>
+          
+          {/* Form Overlay - responsive positioning */}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-[90%] max-w-[580px]">
+            <div className="bg-white shadow-lg p-6 sm:p-8 rounded-lg">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="font-gc-palioka text-[32px] sm:text-[40px] md:text-[45px] text-black mb-2 leading-tight">
+                  We&apos;ll get in touch with
+                  <br />
+                  you soon
+                </h2>
+              </div>
+
+              <form className="space-y-4 sm:space-y-6">
+                {/* Your name field */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name *"
+                    className="w-full px-4 sm:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 sm:left-[66px] right-12 sm:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Image
+                      src="/contact-us/Vector.png"
+                      alt="Name"
+                      width={20}
+                      height={20}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
-                <form className="space-y-6">
-                  {/* Your name field */}
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Your name *"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                {/* Email field */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your email address *"
+                    className="w-full px-4 sm:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 sm:left-[66px] right-12 sm:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Image
+                      src="/contact-us/mail.png"
+                      alt="Email"
+                      width={20}
+                      height={20}
+                      className="object-contain"
                     />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Image
-                        src="/contact-us/Vector.png"
-                        alt="Name"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
                   </div>
+                </div>
 
-                  {/* Email field */}
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Your email address *"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                {/* Phone field */}
+                <div className="relative">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Your phone"
+                    className="w-full px-4 sm:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 sm:left-[66px] right-12 sm:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Message field */}
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Your message"
+                    className="w-full px-4 sm:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575] resize-none"
+                  ></textarea>
+                  <div className="absolute bottom-0 left-4 sm:left-[66px] right-12 sm:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-3">
+                    <Image
+                      src="/contact-us/message.png"
+                      alt="Message"
+                      width={20}
+                      height={20}
+                      className="object-contain"
                     />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Image
-                        src="/contact-us/mail.png"
-                        alt="Email"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
                   </div>
+                </div>
 
-                  {/* Phone field */}
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="Your phone"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
-                    />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Message field */}
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      placeholder="Your message"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575] resize-none"
-                    ></textarea>
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-3">
-                      <Image
-                        src="/contact-us/message.png"
-                        alt="Message"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Submit button */}
-                  <div className="pt-4 flex justify-center">
-                    <button
-                      type="submit"
-                      className="bg-[#8D957E] text-white text-sm font-medium tracking-wider hover:bg-[#7A8470] transition-colors duration-300 flex items-center justify-center"
-                      style={{ width: '197px', height: '50px', borderRadius: '4px' }}
-                    >
-                      SEND INQUIRY
-                    </button>
-                  </div>
-                </form>
-              </div>
+                {/* Submit button */}
+                <div className="pt-4 flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-[#8D957E] text-white text-sm font-medium tracking-wider hover:bg-[#7A8470] transition-colors duration-300 flex items-center justify-center rounded"
+                    style={{ width: '197px', height: '50px' }}
+                  >
+                    SEND INQUIRY
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -335,122 +335,122 @@ export default function ContactForm() {
 
       {/* Desktop Layout - Hidden on mobile and tablet */}
       <div className="hidden lg:block">
-        <div className="flex justify-center">
+        <div className="relative w-full">
           {/* Background Image Container */}
-          <div className="relative" style={{ width: '1440px', height: '500px', maxWidth: '100%' }}>
+          <div className="relative w-full h-[500px] lg:h-[600px] xl:h-[500px]">
             <Image
               src="/contact-us/contactformbg.png"
               alt="Contact Form Background"
               fill
-              sizes="1440px"
+              sizes="100vw"
               className="object-cover"
               priority
             />
-            
-            {/* Form Overlay - positioned with specific dimensions */}
-            <div className="absolute top-full right-40 transform -translate-y-1/6" style={{ width: '580px', height: '660px' }}>
-              <div className="bg-white shadow-lg p-8 pr-12">
-                <div className="text-center mb-8">
-                  <h2 className="font-gc-palioka text-[45px] text-black mb-2 leading-tight">
-                    We&apos;ll get in touch with
-                    <br />
-                    you soon
-                  </h2>
+          </div>
+          
+          {/* Form Overlay - responsive positioning */}
+          <div className="absolute top-full right-4 lg:right-8 xl:right-40 transform -translate-y-1/4 w-[90%] max-w-[580px] lg:w-[45%] xl:w-[580px]">
+            <div className="bg-white shadow-lg p-6 lg:p-8 rounded-lg">
+              <div className="text-center mb-6 lg:mb-8">
+                <h2 className="font-gc-palioka text-[36px] lg:text-[40px] xl:text-[45px] text-black mb-2 leading-tight">
+                  We&apos;ll get in touch with
+                  <br />
+                  you soon
+                </h2>
+              </div>
+
+              <form className="space-y-4 lg:space-y-6">
+                {/* Your name field */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name *"
+                    className="w-full px-4 lg:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 lg:left-[66px] right-12 lg:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Image
+                      src="/contact-us/Vector.png"
+                      alt="Name"
+                      width={20}
+                      height={20}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
-                <form className="space-y-6">
-                  {/* Your name field */}
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Your name *"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                {/* Email field */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your email address *"
+                    className="w-full px-4 lg:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 lg:left-[66px] right-12 lg:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Image
+                      src="/contact-us/mail.png"
+                      alt="Email"
+                      width={20}
+                      height={20}
+                      className="object-contain"
                     />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Image
-                        src="/contact-us/Vector.png"
-                        alt="Name"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
                   </div>
+                </div>
 
-                  {/* Email field */}
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Your email address *"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                {/* Phone field */}
+                <div className="relative">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Your phone"
+                    className="w-full px-4 lg:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
+                  />
+                  <div className="absolute bottom-0 left-4 lg:left-[66px] right-12 lg:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Message field */}
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Your message"
+                    className="w-full px-4 lg:px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575] resize-none"
+                  ></textarea>
+                  <div className="absolute bottom-0 left-4 lg:left-[66px] right-12 lg:right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
+                  <div className="absolute right-3 top-3">
+                    <Image
+                      src="/contact-us/message.png"
+                      alt="Message"
+                      width={20}
+                      height={20}
+                      className="object-contain"
                     />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Image
-                        src="/contact-us/mail.png"
-                        alt="Email"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
                   </div>
+                </div>
 
-                  {/* Phone field */}
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="Your phone"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575]"
-                    />
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Message field */}
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      placeholder="Your message"
-                      className="w-full px-[66px] py-3 border-0 bg-transparent focus:outline-none transition-colors placeholder-[#757575] resize-none"
-                    ></textarea>
-                    <div className="absolute bottom-0 left-[66px] right-[66px] h-[2px] bg-gray-300 transition-colors group-focus-within:bg-[#8D957E]"></div>
-                    <div className="absolute right-3 top-3">
-                      <Image
-                        src="/contact-us/message.png"
-                        alt="Message"
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Submit button */}
-                  <div className="pt-4 flex justify-center">
-                    <button
-                      type="submit"
-                      className="bg-[#8D957E] text-white text-sm font-medium tracking-wider hover:bg-[#7A8470] transition-colors duration-300 flex items-center justify-center"
-                      style={{ width: '197px', height: '50px', borderRadius: '4px' }}
-                    >
-                      SEND INQUIRY
-                    </button>
-                  </div>
-                </form>
-              </div>
+                {/* Submit button */}
+                <div className="pt-4 flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-[#8D957E] text-white text-sm font-medium tracking-wider hover:bg-[#7A8470] transition-colors duration-300 flex items-center justify-center rounded"
+                    style={{ width: '197px', height: '50px' }}
+                  >
+                    SEND INQUIRY
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
